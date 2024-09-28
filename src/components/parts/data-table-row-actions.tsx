@@ -23,7 +23,7 @@ export function DataTableRowActions({
 }: DataTableRowActionsProps) {
   const [isCopied, setIsCopied] = useState(false)
   const copyLinkToClipboard = () => {
-    const currentUrl = window.location.href.split('?')[0] // Get the base URL without query params
+    const currentUrl = window.location.href.split('?')[0]
     const linkWithRowId = `${currentUrl}?rowId=${rowId}&expanded=true`
 
     navigator.clipboard.writeText(linkWithRowId).then(() => {
@@ -32,7 +32,7 @@ export function DataTableRowActions({
         title: "Link copied to clipboard",
         description: "The link to this row has been copied to your clipboard.",
       })
-      setTimeout(() => setIsCopied(false), 2000) // Reset after 2 seconds
+      setTimeout(() => setIsCopied(false), 2000)
     }).catch(err => {
       console.error('Failed to copy: ', err)
       toast({

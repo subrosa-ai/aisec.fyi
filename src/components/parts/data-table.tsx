@@ -30,7 +30,6 @@ import {
 import { DataTablePagination } from "./data-table-pagination"
 import { DataTableToolbar } from "./data-table-toolbar"
 
-import { sortBy } from 'lodash';  // You might need to install lodash
 import Link from "next/link"
 import { Button } from "../ui/button"
 
@@ -144,7 +143,7 @@ export function DataTable<TData, TValue>({
                       <TableCell colSpan={columns.length} className="p-0">
                         <div className="bg-muted">
                           <div className="grid grid-cols-[auto,1fr] gap-x-4 p-4">
-                            <div className="w-8" /> {/* Spacer to align with expander button */}
+                            <div className="w-8" />
                             <div>
                               <h4 className="font-semibold mb-2">Summary</h4>
                               <p className="mb-2 text-sm text-muted-foreground">

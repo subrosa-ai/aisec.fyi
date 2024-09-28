@@ -1,17 +1,17 @@
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
-import { ChevronRight, ChevronDown } from "lucide-react"  // Import icons
+import { ChevronRight, ChevronDown } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { category, serverity, regions } from "../../data/data"
-import { Task } from "../../data/schema"
+import { aiSecNewschemaType } from "../../data/schema"
 import { DataTableColumnHeader } from "./data-table-column-header"
 import { DataTableRowActions } from "./data-table-row-actions"
 import { Button } from "../ui/button"
 import { parse } from "date-fns"
 
-export const columns: ColumnDef<Task>[] = [
+export const columns: ColumnDef<aiSecNewschemaType>[] = [
   {
     id: "expander",
     header: () => null,
