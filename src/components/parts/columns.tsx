@@ -33,9 +33,9 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
     },
   },
   {
-    accessorKey: "title",
+    accessorKey: "category",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Title" />
+      <DataTableColumnHeader column={column} title="Category" />
     ),
     cell: ({ row }) => {
       const label = category.find((category) => category.value === row.original.category)
@@ -43,6 +43,22 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
       return (
         <div className="flex space-x-2">
           {label && <Badge variant="outline">{label.label}</Badge>}
+        </div>
+      )
+    },
+    filterFn: (row, _, value) => {
+      return value.includes(row.original.category)
+    },
+  },
+  {
+    accessorKey: "title",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Title" />
+    ),
+    cell: ({ row }) => {
+
+      return (
+        <div className="flex space-x-2">
           <span className="max-w-[500px] truncate font-medium">
             {row.getValue("title")}
           </span>
@@ -50,7 +66,7 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
       )
     },
     filterFn: (row, _, value) => {
-      return value.includes(row.original.category)
+      return row.original.title.toLocaleLowerCase().includes(value.toLocaleLowerCase())
     },
   },
   {

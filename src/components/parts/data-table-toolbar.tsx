@@ -37,9 +37,9 @@ export function DataTableToolbar<TData>({
             options={regions}
           />
       )}
-        {table.getColumn("title") && (
+        {table.getColumn("category") && (
           <DataTableFacetedFilter
-            column={table.getColumn("title")}
+            column={table.getColumn("category")}
             title="Category"
             options={category}
           />
