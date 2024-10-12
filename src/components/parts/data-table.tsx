@@ -100,13 +100,13 @@ export function DataTable<TData, TValue>({
     <div className="space-y-4">
       <DataTableToolbar table={table} />
       <div className="rounded-md border">
-        <Table>
-          <TableHeader>
+        <Table className="min-w-full divide-y divide-gray-200 block md:table">
+          <TableHeader className="hidden md:table-header-group">
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow key={headerGroup.id} className="md:table-row">
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id} colSpan={header.colSpan}>
+                    <TableHead key={header.id} colSpan={header.colSpan} className="md:table-cell">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -126,10 +126,16 @@ export function DataTable<TData, TValue>({
                   <TableRow 
                     data-state={row.getIsSelected() && "selected"}
                     id={`row-${row.id}`}
+                    className="relative block md:table-row p-4 md:p-0 md:mb-4 md:mb-0 w-full"
                   >
                     {row.getVisibleCells().map((cell) => (
                       <TableCell 
                         key={cell.id} 
+                        className="block md:table-cell p-2"
+                        data-label={cell.column.columnDef.header} // Add data-label for mobile
+                        style={{ 
+                          width: cell.column.id === 'expander' ? '10px' : 'unset'
+                        }}
                       >
                         {flexRender(
                           cell.column.columnDef.cell,
@@ -139,9 +145,9 @@ export function DataTable<TData, TValue>({
                     ))}
                   </TableRow>
                   {row.getIsExpanded() && (
-                    <TableRow>
+                    <TableRow className="h-24"> {/* Fixed height for expanded row */}
                       <TableCell colSpan={columns.length} className="p-0">
-                        <div className="bg-muted">
+                        <div className="bg-muted overflow-hidden">
                           <div className="grid grid-cols-[auto,1fr] gap-x-4 p-4">
                             <div className="w-8" />
                             <div>
@@ -150,7 +156,7 @@ export function DataTable<TData, TValue>({
                                 {(row.original as any).summary ?? 'No summary available'}
                               </p>
                               {(row.original as any).link && (
-                                <Button asChild variant="link" className="p-0 h-auto">
+                                <Button asChild variant="link" className="p-0 h-auto underline">
                                   <Link href={(row.original as any).link} target="_blank" rel="noopener noreferrer">
                                     Source
                                   </Link>
