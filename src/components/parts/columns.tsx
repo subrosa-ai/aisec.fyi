@@ -15,10 +15,13 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
   {
     id: "expander",
     header: () => null,
-    cell: ({ row }) => {
+    cell: ({ table, row }) => {
       return (
         <Button
-          onClick={() => row.toggleExpanded()}
+          onClick={() => {
+            row.toggleExpanded()
+            table.setExpanded({ [row.id]: !row.getIsExpanded() })
+          }}
           aria-label={row.getIsExpanded() ? "Collapse row" : "Expand row"}
           variant="ghost"
           className="md:flex h-8 w-8 p-0 data-[state=open]:bg-muted hidden"

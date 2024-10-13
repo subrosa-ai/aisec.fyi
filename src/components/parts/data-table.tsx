@@ -70,6 +70,23 @@ export function DataTable<TData, TValue>({
     }
   }, [searchParams])
 
+  React.useEffect(() => {
+    const expandedRowIds = Object.keys(expanded)
+    const expandedRowId = expandedRowIds.length > 0 ? expandedRowIds[0] : undefined;
+
+    if (expandedRowId) {
+      const params = new URLSearchParams(window.location.search);
+      params.set('rowId', expandedRowId);
+      params.set('expanded', 'true');
+      window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
+    } else {
+      const params = new URLSearchParams(window.location.search);
+      params.delete('rowId');
+      params.delete('expanded');
+      window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
+    }
+  }, [expanded])
+
   const table = useReactTable({
     data: data,
     columns,
