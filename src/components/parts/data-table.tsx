@@ -71,7 +71,7 @@ export function DataTable<TData, TValue>({
   }, [searchParams])
 
   React.useEffect(() => {
-    const expandedRowIds = Object.keys(expanded)
+    const expandedRowIds = Object.keys(expanded);
     const expandedRowId = expandedRowIds.length > 0 ? expandedRowIds[0] : undefined;
 
     if (expandedRowId) {
@@ -162,7 +162,7 @@ export function DataTable<TData, TValue>({
                     ))}
                   </TableRow>
                   {row.getIsExpanded() && (
-                    <TableRow className="h-24"> {/* Fixed height for expanded row */}
+                    <TableRow className="h-24">
                       <TableCell colSpan={columns.length} className="p-0">
                         <div className="bg-muted overflow-hidden">
                           <div className="grid grid-cols-[auto,1fr] gap-x-4 p-4">

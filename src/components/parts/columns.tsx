@@ -21,6 +21,11 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
           onClick={() => {
             row.toggleExpanded()
             table.setExpanded({ [row.id]: !row.getIsExpanded() })
+            document.title = `${row.original.title} | AISec.fyi`;
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) {
+              metaDescription.setAttribute("content", row.original.summary);
+            }
           }}
           aria-label={row.getIsExpanded() ? "Collapse row" : "Expand row"}
           variant="ghost"
