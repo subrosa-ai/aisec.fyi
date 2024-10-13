@@ -57,16 +57,18 @@ export function DataTable<TData, TValue>({
   const searchParams = useSearchParams()
 
   React.useEffect(() => {
-    const rowId = searchParams.get('rowId')
-    const isExpanded = searchParams.get('expanded')
+    if (searchParams) {
+      const rowId = searchParams.get('rowId')
+      const isExpanded = searchParams.get('expanded')
 
-    if (rowId && isExpanded === 'true') {
-      setExpanded({ [rowId]: true })
-      // Scroll to the expanded row
-      setTimeout(() => {
-        const element = document.getElementById(`row-${rowId}`)
-        if (element) element.scrollIntoView({ behavior: 'smooth' })
-      }, 100)
+      if (rowId && isExpanded === 'true') {
+        setExpanded({ [rowId]: true })
+        // Scroll to the expanded row
+        setTimeout(() => {
+          const element = document.getElementById(`row-${rowId}`)
+          if (element) element.scrollIntoView({ behavior: 'smooth' })
+        }, 100)
+      }
     }
   }, [searchParams])
 
@@ -127,9 +129,9 @@ export function DataTable<TData, TValue>({
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                     </TableHead>
                   )
                 })}
@@ -140,17 +142,17 @@ export function DataTable<TData, TValue>({
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <React.Fragment key={row.id}>
-                  <TableRow 
+                  <TableRow
                     data-state={row.getIsSelected() && "selected"}
                     id={`row-${row.id}`}
                     className="relative block md:table-row p-4 md:p-0 md:mb-4 md:mb-0 w-full"
                   >
                     {row.getVisibleCells().map((cell) => (
-                      <TableCell 
-                        key={cell.id} 
+                      <TableCell
+                        key={cell.id}
                         className="block md:table-cell p-2"
                         data-label={cell.column.columnDef.header} // Add data-label for mobile
-                        style={{ 
+                        style={{
                           width: cell.column.id === 'expander' ? '10px' : 'unset'
                         }}
                       >

@@ -126,12 +126,20 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
   {
     id: "expander-mobile",
     header: () => null,
-    cell: ({ row }) => {
+    cell: ({ table, row }) => {
       return (
         <div className="flex justify-between w-full md:hidden">
           <DataTableRowActions rowId={row.id} link={row.original.link} />
           <Button
-          onClick={() => row.toggleExpanded()}
+          onClick={() => {
+            row.toggleExpanded()
+            table.setExpanded({ [row.id]: !row.getIsExpanded() })
+            document.title = `${row.original.title} | AISec.fyi`;
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) {
+              metaDescription.setAttribute("content", row.original.summary);
+            }
+          }}
           aria-label={row.getIsExpanded() ? "Collapse row" : "Expand row"}
           variant="ghost"
           className="md:hidden p-0 data-[state=open]:bg-muted"
