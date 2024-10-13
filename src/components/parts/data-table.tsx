@@ -32,6 +32,7 @@ import { DataTableToolbar } from "./data-table-toolbar"
 
 import Link from "next/link"
 import { Button } from "../ui/button"
+import { aiSecNewschemaType } from "@/data/schema"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -62,7 +63,7 @@ export function DataTable<TData, TValue>({
       const isExpanded = searchParams.get('expanded');
 
       if (rowId && isExpanded === 'true') {
-        const rowIndex = data.findIndex(item => item.id === rowId); // Find the index of the item
+        const rowIndex = data.findIndex(item => (item as any).id === rowId); // Find the index of the item
         const pageSize = table.getState().pagination.pageSize;
         const targetPage = table.getPageCount() - Math.floor(rowIndex / pageSize); // Calculate the target page
         const currentPage = table.getState().pagination.pageIndex; // Get the current page index
@@ -124,7 +125,7 @@ export function DataTable<TData, TValue>({
     getRowCanExpand: () => true,
     enableSorting: true,
     getRowId: (row, relativeIndex, parent) => {
-      return row.id;
+      return (row as any).id;
     }
   })
 
