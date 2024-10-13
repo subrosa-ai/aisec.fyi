@@ -58,19 +58,29 @@ export function DataTable<TData, TValue>({
 
   React.useEffect(() => {
     if (searchParams) {
-      const rowId = searchParams.get('rowId')
-      const isExpanded = searchParams.get('expanded')
+      const rowId = searchParams.get('rowId');
+      const isExpanded = searchParams.get('expanded');
 
       if (rowId && isExpanded === 'true') {
-        setExpanded({ [rowId]: true })
-        // Scroll to the expanded row
-        setTimeout(() => {
-          const element = document.getElementById(`row-${rowId}`)
-          if (element) element.scrollIntoView({ behavior: 'smooth' })
-        }, 100)
+        const rowIndex = data.findIndex(item => item.id === rowId); // Find the index of the item
+        const pageSize = table.getState().pagination.pageSize;
+        const targetPage = table.getPageCount() - Math.floor(rowIndex / pageSize); // Calculate the target page
+        const currentPage = table.getState().pagination.pageIndex; // Get the current page index
+
+        console.log(`targetPage ${targetPage} currentPage ${currentPage}`)
+        if (currentPage !== targetPage) {
+          setExpanded({ [rowId]: true });
+          table.setPageIndex(targetPage - 1); // Update the table's page index
+        } else {
+          setExpanded({ [rowId]: true });
+          setTimeout(() => {
+            const element = document.getElementById(`row-${rowId}`);
+            if (element) element.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
       }
     }
-  }, [searchParams])
+  }, [searchParams, data]);
 
   React.useEffect(() => {
     const expandedRowIds = Object.keys(expanded);
@@ -78,7 +88,7 @@ export function DataTable<TData, TValue>({
 
     if (expandedRowId) {
       const params = new URLSearchParams(window.location.search);
-      params.set('rowId', expandedRowId);
+      params.set('rowId', expandedRowId); // Use rowId instead of expandedRowId
       params.set('expanded', 'true');
       window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
     } else {
@@ -113,6 +123,9 @@ export function DataTable<TData, TValue>({
     getFacetedUniqueValues: getFacetedUniqueValues(),
     getRowCanExpand: () => true,
     enableSorting: true,
+    getRowId: (row, relativeIndex, parent) => {
+      return row.id;
+    }
   })
 
   return (
@@ -141,10 +154,10 @@ export function DataTable<TData, TValue>({
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <React.Fragment key={row.id}>
+                <React.Fragment key={(row.original as any).id}>
                   <TableRow
                     data-state={row.getIsSelected() && "selected"}
-                    id={`row-${row.id}`}
+                    id={`row-${(row.original as any).id}`}
                     className="relative block md:table-row p-4 md:p-0 md:mb-4 md:mb-0 w-full"
                   >
                     {row.getVisibleCells().map((cell) => (

@@ -119,7 +119,7 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
     id: "actions",
     cell: ({ row }) => {
       return <div className="hidden md:flex">
-        <DataTableRowActions rowId={row.id} link={row.original.link} />
+        <DataTableRowActions rowId={row.original.id} link={row.original.link} />
       </div>
     },
   },
@@ -129,7 +129,7 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
     cell: ({ table, row }) => {
       return (
         <div className="flex justify-between w-full md:hidden">
-          <DataTableRowActions rowId={row.id} link={row.original.link} />
+          <DataTableRowActions rowId={row.original.id} link={row.original.link} />
           <Button
           onClick={() => {
             row.toggleExpanded()

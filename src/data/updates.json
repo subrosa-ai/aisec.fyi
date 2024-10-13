@@ -1,6 +1,6 @@
-
-  [
+[
     {
+      "id": "aisec-1",
       "title": "ChatGPT Data Leak",
       "region": "Global",
       "date": "March 2023",
@@ -9,6 +9,7 @@
       "category": "data leak"
     },
     {
+      "id": "aisec-2",
       "title": "Samsung Data Leak via ChatGPT",
       "region": "South Korea",
       "date": "April 2023",
@@ -17,6 +18,7 @@
       "category": "data leak"
     },
     {
+      "id": "aisec-3",
       "title": "Microsoft AI-Powered Bing Chat Data Exposure",
       "region": "Global",
       "date": "February 2023",
@@ -25,6 +27,7 @@
       "category": "data leak"
     },
     {
+      "id": "aisec-4",
       "title": "Anthropic Claude AI Test Data Leak",
       "region": "US",
       "date": "March 2023",
@@ -33,6 +36,7 @@
       "category": "data leak"
     },
     {
+      "id": "aisec-5",
       "title": "Clearview AI Data Breach",
       "region": "Global",
       "date": "March 2023",
@@ -41,6 +45,7 @@
       "category": "data leak"
     },
     {
+      "id": "aisec-6",
       "title": "PimEyes Facial Recognition Data Leak",
       "region": "Global",
       "date": "May 2022",
@@ -49,6 +54,7 @@
       "category": "data leak"
     },
     {
+      "id": "aisec-7",
       "title": "DeepMind AI System Potential Data Breach",
       "region": "UK",
       "date": "July 2022",
@@ -57,6 +63,7 @@
       "category": "vulnerability"
     },
     {
+      "id": "aisec-8",
       "title": "Microsoft Power Apps AI Data Exposure",
       "region": "Global",
       "date": "August 2021",
@@ -65,6 +72,7 @@
       "category": "data leak"
     },
     {
+      "id": "aisec-9",
       "title": "Verkada AI-Powered Camera System Hack",
       "region": "Global",
       "date": "March 2021",
@@ -73,6 +81,7 @@
       "category": "hack"
     },
     {
+      "id": "aisec-10",
       "title": "SAP AI Core Vulnerabilities",
       "region": "Global",
       "date": "July 2024",
@@ -81,6 +90,7 @@
       "category": "vulnerability"
     },
     {
+      "id": "aisec-11",
       "title": "Italian Data Protection Authority Accuses ChatGPT of Privacy Violations",
       "region": "Italy",
       "date": "January 2024",
@@ -89,6 +99,7 @@
       "category": "privacy breach"
     },
     {
+      "id": "aisec-12",
       "title": "Meta Halts AI Training on EU User Data Amid Privacy Concerns",
       "region": "European Union",
       "date": "June 2024",
@@ -97,6 +108,7 @@
       "category": "privacy breach"
     },
     {
+      "id": "aisec-13",
       "title": "Meta Halts AI Use in Brazil Following Data Protection Authority's Ban",
       "region": "Brazil",
       "date": "July 2024",
@@ -105,6 +117,7 @@
       "category": "privacy breach"
     },
     {
+      "id": "aisec-14",
       "title": "Microsoft Delays Windows Recall Amid Privacy and Security Concerns",
       "region": "Global",
       "date": "June 2024",
@@ -113,6 +126,7 @@
       "category": "privacy breach"
     },
     {
+      "id": "aisec-15",
       "title": "X Faces GDPR Complaints for Unauthorized Use of Data for AI Training",
       "region": "European Union",
       "date": "August 2024",
@@ -121,6 +135,7 @@
       "category": "privacy breach"
     },
     {
+      "id": "aisec-16",
       "title": "UK School Reprimanded for Unlawful Use of Facial Recognition Technology",
       "region": "UK",
       "date": "July 2024",
@@ -129,6 +144,7 @@
       "category": "privacy breach"
     },
     {
+      "id": "aisec-17",
       "title": "Photos of Australian Kids Found in Massive AI Training Data Set",
       "region": "Australia",
       "date": "July 2024",
@@ -137,6 +153,7 @@
       "category": "privacy breach"
     },
     {
+      "id": "aisec-18",
       "title": "Victorian Case Worker Used ChatGPT to Draft Child Protection Report",
       "region": "Australia",
       "date": "September 2024",
@@ -145,6 +162,7 @@
       "category": "privacy breach"
     },
     {
+      "id": "aisec-19",
       "title": "Meta Under Fire for Scraping Australian Data for AI Development Without Opt-Out Option",
       "region": "Australia",
       "date": "September 2024",
@@ -153,6 +171,7 @@
       "category": "privacy breach"
     },
     {
+      "id": "aisec-20",
       "title": "Privacy Regulator Probes I-MED for Sharing Patient Data with harrison.ai",
       "region": "Australia",
       "date": "September 2024",
@@ -160,4 +179,4 @@
       "summary": "The Office of the Australian Information Commissioner (OAIC) is investigating I-MED Radiology Network for providing private medical scans to harrison.ai for AI training without patient knowledge. The OAIC is examining whether I-MED complied with Australian privacy principles. While both companies claim data was de-identified, the OAIC warns this may not fully remove privacy risks. The investigation follows I-MED's silence on the matter and harrison.ai's attempts to distance itself from consent issues.",
       "category": "privacy breach"
     }
-  ]
+]

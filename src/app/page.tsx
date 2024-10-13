@@ -7,7 +7,6 @@ import { z } from "zod"
 import { columns } from "@/components/parts/columns"
 import { DataTable } from "@/components/parts/data-table"
 import { aiSecNewschema } from "@/data/schema"
-import { Toaster } from "@/components/ui/toaster"
 import logo from '@/app/logo.png'
 import Link from "next/link"
 import { Button } from "@/components/ui/button"

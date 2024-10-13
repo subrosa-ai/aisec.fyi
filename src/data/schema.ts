@@ -1,6 +1,7 @@
 import { z } from "zod"
 
 export const aiSecNewschema = z.object({
+  id: z.string(),
   title: z.string(),
   region: z.string(),
   date: z.string(),
