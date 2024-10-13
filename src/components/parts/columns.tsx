@@ -137,9 +137,9 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
           className="md:hidden p-0 data-[state=open]:bg-muted"
         >
           {row.getIsExpanded() ? (
-           <div className="flex items-center"> <ChevronDown className="h-4 w-4" /> Show summary </div>
+           <div className="flex items-center"> <ChevronDown className="h-4 w-4" /> Hide summary </div>
           ) : (
-            <div className="flex items-center"> <ChevronRight className="h-4 w-4" /> Hide summary </div>
+            <div className="flex items-center"> <ChevronRight className="h-4 w-4" /> Show summary </div>
           )}
         </Button> 
         </div>

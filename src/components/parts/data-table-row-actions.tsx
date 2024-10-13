@@ -11,6 +11,7 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
+import { Share, Share2 } from "lucide-react"
 
 
 interface DataTableRowActionsProps {
@@ -44,22 +45,13 @@ export function DataTableRowActions({
   }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+  
         <Button
           variant="ghost"
-          className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
+          className="flex h-8 w-8 p-0"
+          onClick={copyLinkToClipboard}
         >
-          <DotsHorizontalIcon className="h-4 w-4" />
-          <span className="sr-only">Open menu</span>
+          <Share2 className="h-4 w-4" />
         </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-[160px]">
-        <DropdownMenuItem onClick={copyLinkToClipboard}>
-          {isCopied ? "Copied!" : "Copy Link"}
-        </DropdownMenuItem>
-        <DropdownMenuItem>Share</DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
   )
 }
