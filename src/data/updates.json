@@ -178,5 +178,14 @@
       "link": "https://www.crikey.com.au/2024/09/23/privacy-regulator-oaic-imed-harrisonai-patient-medical-scan-data/",
       "summary": "The Office of the Australian Information Commissioner (OAIC) is investigating I-MED Radiology Network for providing private medical scans to harrison.ai for AI training without patient knowledge. The OAIC is examining whether I-MED complied with Australian privacy principles. While both companies claim data was de-identified, the OAIC warns this may not fully remove privacy risks. The investigation follows I-MED's silence on the matter and harrison.ai's attempts to distance itself from consent issues.",
       "category": "privacy breach"
+    },
+    {"id": "aisec-21",
+    "title": "Hacked ‘AI Girlfriend’ Data Shows Prompts Describing Child Sexual Abuse",
+    "region": "Global",
+    "date": "October 2024",
+    "link":"https://www.404media.co/hacked-ai-girlfriend-data-shows-prompts-describing-child-sexual-abuse-2/",
+    "summary": "A popular AI girlfriend app experienced a data breach, exposing user data and chat logs. The leaked data revealed concerning user behavior, including attempts to engage the AI in discussions about illegal activities. The incident highlighted issues of data security and ethical concerns in AI companion apps.",
+    "cateogry": "data breach"
     }
+    
 ]
