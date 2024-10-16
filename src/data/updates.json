@@ -1,199 +1,200 @@
 [
-    {
-      "id": "aisec-1",
-      "title": "ChatGPT Data Leak",
-      "region": "Global",
-      "date": "March 2023",
-      "link": "https://www.theverge.com/2023/3/24/23655622/openai-chatgpt-data-leak-breach-api-bug",
-      "summary": "A bug in ChatGPT's API exposed the titles of users' conversation histories and some payment-related information of ChatGPT Plus subscribers. OpenAI temporarily took ChatGPT offline to fix the issue.",
-      "category": "data leak"
-    },
-    {
-      "id": "aisec-2",
-      "title": "Samsung Data Leak via ChatGPT",
-      "region": "South Korea",
-      "date": "April 2023",
-      "link": "https://www.bleepingcomputer.com/news/security/samsung-bans-use-of-generative-ai-tools-after-data-leak/",
-      "summary": "Samsung employees inadvertently leaked sensitive company data by inputting it into ChatGPT. This led to source code being exposed and prompted Samsung to temporarily ban the use of generative AI tools.",
-      "category": "data leak"
-    },
-    {
-      "id": "aisec-3",
-      "title": "Microsoft AI-Powered Bing Chat Data Exposure",
-      "region": "Global",
-      "date": "February 2023",
-      "link": "https://www.bleepingcomputer.com/news/security/microsoft-bing-chat-leaks-internal-microsoft-information/",
-      "summary": "Microsoft's AI-powered Bing Chat was found to be leaking internal Microsoft information, including details about the AI's operations and internal codenames. This wasn't a traditional breach, but an unintended disclosure through the AI system itself.",
-      "category": "data leak"
-    },
-    {
-      "id": "aisec-4",
-      "title": "Anthropic Claude AI Test Data Leak",
-      "region": "US",
-      "date": "March 2023",
-      "link": "https://www.vice.com/en/article/pkadgm/ai-company-accidentally-releases-trove-of-sensitive-internal-data",
-      "summary": "Anthropic, the creator of Claude AI, accidentally released a large amount of internal data, including test conversations with its AI model. The data contained sensitive information about the company's AI development process.",
-      "category": "data leak"
-    },
-    {
-      "id": "aisec-5",
-      "title": "Clearview AI Data Breach",
-      "region": "Global",
-      "date": "March 2023",
-      "link": "https://www.nytimes.com/2023/03/24/technology/clearview-ai-face-recognition-breach.html",
-      "summary": "Clearview AI, a facial recognition company, suffered a data breach that exposed its client list, including law enforcement agencies. The breach raised concerns about the privacy implications of AI-powered facial recognition technology.",
-      "category": "data leak"
-    },
-    {
-      "id": "aisec-6",
-      "title": "PimEyes Facial Recognition Data Leak",
-      "region": "Global",
-      "date": "May 2022",
-      "link": "https://www.wired.com/story/pimeyes-facial-recognition-search-engine-leak-pii/",
-      "summary": "PimEyes, a facial recognition search engine, experienced a data leak that exposed sensitive information about its users, including email addresses and the last four digits of credit card numbers.",
-      "category": "data leak"
-    },
-    {
-      "id": "aisec-7",
-      "title": "DeepMind AI System Potential Data Breach",
-      "region": "UK",
-      "date": "July 2022",
-      "link": "https://www.theguardian.com/technology/2022/jul/20/deepmind-ai-system-streams-private-data",
-      "summary": "DeepMind's AI system for patient care in UK hospitals was found to potentially expose private health data. While not a confirmed breach, the incident raised concerns about data privacy in AI-driven healthcare systems.",
-      "category": "vulnerability"
-    },
-    {
-      "id": "aisec-8",
-      "title": "Microsoft Power Apps AI Data Exposure",
-      "region": "Global",
-      "date": "August 2021",
-      "link": "https://www.wired.com/story/power-apps-data-exposed/",
-      "summary": "A configuration issue in Microsoft's Power Apps platform, which uses AI for app development, led to the exposure of 38 million records containing sensitive information from various organizations.",
-      "category": "data leak"
-    },
-    {
-      "id": "aisec-9",
-      "title": "Verkada AI-Powered Camera System Hack",
-      "region": "Global",
-      "date": "March 2021",
-      "link": "https://www.bloomberg.com/news/articles/2021-03-09/hackers-expose-tesla-jails-in-breach-of-150-000-security-cams",
-      "summary": "Hackers gained access to Verkada's AI-powered camera systems, exposing live feeds from 150,000 security cameras in various locations including Tesla factories, hospitals, and schools.",
-      "category": "hack"
-    },
-    {
-      "id": "aisec-10",
-      "title": "SAP AI Core Vulnerabilities",
-      "region": "Global",
-      "date": "July 2024",
-      "link": "https://thehackernews.com/2024/07/sap-ai-core-vulnerabilities-expose.html",
-      "summary": "Multiple vulnerabilities were discovered in SAP AI Core, potentially exposing sensitive data and allowing unauthorized access. These flaws could lead to information disclosure, privilege escalation, and remote code execution, affecting AI model development and deployment.",
-      "category": "vulnerability"
-    },
-    {
-      "id": "aisec-11",
-      "title": "Italian Data Protection Authority Accuses ChatGPT of Privacy Violations",
-      "region": "Italy",
-      "date": "January 2024",
-      "link": "https://thehackernews.com/2024/01/italian-data-protection-watchdog.html",
-      "summary": "Italy's data protection authority (DPA) has notified OpenAI, the creator of ChatGPT, of potential violations of EU GDPR privacy laws. The allegations stem from a multi-month investigation and are related to the collection of personal data and age protections. OpenAI has been given 30 days to respond to these accusations.",
-      "category": "privacy breach"
-    },
-    {
-      "id": "aisec-12",
-      "title": "Meta Halts AI Training on EU User Data Amid Privacy Concerns",
-      "region": "European Union",
-      "date": "June 2024",
-      "link": "https://thehackernews.com/2024/06/meta-halts-ai-training-on-eu-user-data.html",
-      "summary": "Meta has paused its efforts to train large language models using public content from EU users on Facebook and Instagram following a request from the Irish Data Protection Commission. The company planned to use personal data for AI training without explicit user consent, relying on 'Legitimate Interests' as the legal basis. This delay affects Meta's AI development plans in Europe and has sparked debates about GDPR compliance and user privacy.",
-      "category": "privacy breach"
-    },
-    {
-      "id": "aisec-13",
-      "title": "Meta Halts AI Use in Brazil Following Data Protection Authority's Ban",
-      "region": "Brazil",
-      "date": "July 2024",
-      "link": "https://thehackernews.com/2024/07/meta-halts-ai-use-in-brazil-following.html",
-      "summary": "Meta has suspended the use of generative AI in Brazil after the country's National Data Protection Authority (ANPD) issued a preliminary ban on its new privacy policy. The ANPD objected to Meta's policy that would grant access to users' personal data for AI training. Meta is in talks with ANPD to address concerns, facing potential daily fines of 50,000 reais (about $9,100) for non-compliance.",
-      "category": "privacy breach"
-    },
-    {
-      "id": "aisec-14",
-      "title": "Microsoft Delays Windows Recall Amid Privacy and Security Concerns",
-      "region": "Global",
-      "date": "June 2024",
-      "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-delays-windows-recall-amid-privacy-and-security-concerns/",
-      "summary": "Microsoft has delayed the release of its AI-powered Windows Recall feature due to privacy and security concerns. Initially planned for public preview on June 18 with new Copilot+ AI PCs, the feature will now be first available to Windows Insiders for testing. Windows Recall takes screenshots every few seconds and uses AI to analyze and index them, raising concerns about data theft and privacy. Microsoft has made it an opt-in feature and added Windows Hello authentication, but experts still warn of potential security risks.",
-      "category": "privacy breach"
-    },
-    {
-      "id": "aisec-15",
-      "title": "X Faces GDPR Complaints for Unauthorized Use of Data for AI Training",
-      "region": "European Union",
-      "date": "August 2024",
-      "link": "https://www.bleepingcomputer.com/news/artificial-intelligence/x-faces-gdpr-complaints-for-unauthorized-use-of-data-for-ai-training/",
-      "summary": "European privacy advocate NOYB has filed nine GDPR complaints against X (formerly Twitter) for using personal data from over 60 million European users to train its 'Grok' AI model without informing users or obtaining consent. The unauthorized training occurred between May 7 and August 1, 2024. NOYB seeks a full investigation into X's data practices and questions why X is not prompting EU-based users for permission to use their data for AI training.",
-      "category": "privacy breach"
-    },
-    {
-      "id": "aisec-16",
-      "title": "UK School Reprimanded for Unlawful Use of Facial Recognition Technology",
-      "region": "UK",
-      "date": "July 2024",
-      "link": "https://techcrunch.com/2024/07/23/uk-school-reprimanded-for-unlawful-use-of-facial-recognition-technology/",
-      "summary": "Chelmer Valley High School in Essex, UK, has been formally reprimanded by the Information Commissioner's Office (ICO) for using facial recognition technology without proper consent from students. The school introduced the technology for cashless lunch payments in March 2023 but failed to conduct a required data protection impact assessment beforehand. The ICO criticized the school's opt-out approach, which violates UK GDPR requirements for clear affirmative consent, especially for processing biometric data of children.",
-      "category": "privacy breach"
-    },
-    {
-      "id": "aisec-17",
-      "title": "Photos of Australian Kids Found in Massive AI Training Data Set",
-      "region": "Australia",
-      "date": "July 2024",
-      "link": "https://www.unsw.edu.au/newsroom/news/2024/07/photos-Australian-kids-massive-AI-dataset",
-      "summary": "Human Rights Watch discovered photos of Australian children in the LAION-5B data set, used to train AI models for image generation. This massive data set, containing links to 5.85 billion images, was created by scraping publicly available internet content without consent. The incident raises concerns about privacy law violations and the need for stronger enforcement of data protection regulations. Experts argue that publicly available information can still be considered personal information under Australian privacy laws.",
-      "category": "privacy breach"
-    },
-    {
-      "id": "aisec-18",
-      "title": "Victorian Case Worker Used ChatGPT to Draft Child Protection Report",
-      "region": "Australia",
-      "date": "September 2024",
-      "link": "https://www.itnews.com.au/news/vic-case-worker-used-chatgpt-to-draft-child-protection-report-611904",
-      "summary": "A child protection worker in Victoria, Australia, used ChatGPT to draft a report submitted to the Children's Court, containing inaccurate personal information that downplayed risks to a child. The Office of the Victorian Information Commissioner (OVIC) found that sensitive case information was entered into ChatGPT, violating privacy rules. The Department of Families, Fairness and Housing has been directed to ban and block access to generative AI tools. An internal review identified 100 cases with indicators of ChatGPT use in drafting child protection documents over a one-year period.",
-      "category": "privacy breach"
-    },
-    {
-      "id": "aisec-19",
-      "title": "Meta Under Fire for Scraping Australian Data for AI Development Without Opt-Out Option",
-      "region": "Australia",
-      "date": "September 2024",
-      "link": "https://www.cyberdaily.au/digital-transformation/11095-meta-under-fire-for-scraping-australian-data-for-ai-development-without-opt-out-option?highlight=WyJhaSJd",
-      "summary": "Meta has admitted to scraping data from public Facebook and Instagram accounts of Australian users, including photos and text, to train its AI models without providing an opt-out option. This practice includes data from accounts dating back to 2007, and even public photos of children. While European users have been given an opt-out option due to regulatory uncertainty, Australian users can only make their accounts private to avoid data scraping. The revelation came during questioning by Australian senators and has raised concerns about privacy and data protection in AI development.",
-      "category": "privacy breach"
-    },
-    {
-      "id": "aisec-20",
-      "title": "Privacy Regulator Probes I-MED for Sharing Patient Data with harrison.ai",
-      "region": "Australia",
-      "date": "September 2024",
-      "link": "https://www.crikey.com.au/2024/09/23/privacy-regulator-oaic-imed-harrisonai-patient-medical-scan-data/",
-      "summary": "The Office of the Australian Information Commissioner (OAIC) is investigating I-MED Radiology Network for providing private medical scans to harrison.ai for AI training without patient knowledge. The OAIC is examining whether I-MED complied with Australian privacy principles. While both companies claim data was de-identified, the OAIC warns this may not fully remove privacy risks. The investigation follows I-MED's silence on the matter and harrison.ai's attempts to distance itself from consent issues.",
-      "category": "privacy breach"
-    },
-    {"id": "aisec-21",
-    "title": "Hacked ‘AI Girlfriend’ Data Shows Prompts Describing Child Sexual Abuse",
+  {
+    "id": "aisec-1",
+    "title": "ChatGPT Data Leak",
+    "region": "Global",
+    "date": "March 2023",
+    "link": "https://www.theverge.com/2023/3/24/23655622/openai-chatgpt-data-leak-breach-api-bug",
+    "summary": "A bug in ChatGPT's API exposed the titles of users' conversation histories and some payment-related information of ChatGPT Plus subscribers. OpenAI temporarily took ChatGPT offline to fix the issue.",
+    "category": "data leak"
+  },
+  {
+    "id": "aisec-2",
+    "title": "Samsung Data Leak via ChatGPT",
+    "region": "South Korea",
+    "date": "April 2023",
+    "link": "https://www.bleepingcomputer.com/news/security/samsung-bans-use-of-generative-ai-tools-after-data-leak/",
+    "summary": "Samsung employees inadvertently leaked sensitive company data by inputting it into ChatGPT. This led to source code being exposed and prompted Samsung to temporarily ban the use of generative AI tools.",
+    "category": "data leak"
+  },
+  {
+    "id": "aisec-3",
+    "title": "Microsoft AI-Powered Bing Chat Data Exposure",
+    "region": "Global",
+    "date": "February 2023",
+    "link": "https://www.bleepingcomputer.com/news/security/microsoft-bing-chat-leaks-internal-microsoft-information/",
+    "summary": "Microsoft's AI-powered Bing Chat was found to be leaking internal Microsoft information, including details about the AI's operations and internal codenames. This wasn't a traditional breach, but an unintended disclosure through the AI system itself.",
+    "category": "data leak"
+  },
+  {
+    "id": "aisec-4",
+    "title": "Anthropic Claude AI Test Data Leak",
+    "region": "US",
+    "date": "March 2023",
+    "link": "https://www.vice.com/en/article/pkadgm/ai-company-accidentally-releases-trove-of-sensitive-internal-data",
+    "summary": "Anthropic, the creator of Claude AI, accidentally released a large amount of internal data, including test conversations with its AI model. The data contained sensitive information about the company's AI development process.",
+    "category": "data leak"
+  },
+  {
+    "id": "aisec-5",
+    "title": "Clearview AI Data Breach",
+    "region": "Global",
+    "date": "March 2023",
+    "link": "https://www.nytimes.com/2023/03/24/technology/clearview-ai-face-recognition-breach.html",
+    "summary": "Clearview AI, a facial recognition company, suffered a data breach that exposed its client list, including law enforcement agencies. The breach raised concerns about the privacy implications of AI-powered facial recognition technology.",
+    "category": "data leak"
+  },
+  {
+    "id": "aisec-6",
+    "title": "PimEyes Facial Recognition Data Leak",
+    "region": "Global",
+    "date": "May 2022",
+    "link": "https://www.wired.com/story/pimeyes-facial-recognition-search-engine-leak-pii/",
+    "summary": "PimEyes, a facial recognition search engine, experienced a data leak that exposed sensitive information about its users, including email addresses and the last four digits of credit card numbers.",
+    "category": "data leak"
+  },
+  {
+    "id": "aisec-7",
+    "title": "DeepMind AI System Potential Data Breach",
+    "region": "UK",
+    "date": "July 2022",
+    "link": "https://www.theguardian.com/technology/2022/jul/20/deepmind-ai-system-streams-private-data",
+    "summary": "DeepMind's AI system for patient care in UK hospitals was found to potentially expose private health data. While not a confirmed breach, the incident raised concerns about data privacy in AI-driven healthcare systems.",
+    "category": "vulnerability"
+  },
+  {
+    "id": "aisec-8",
+    "title": "Microsoft Power Apps AI Data Exposure",
+    "region": "Global",
+    "date": "August 2021",
+    "link": "https://www.wired.com/story/power-apps-data-exposed/",
+    "summary": "A configuration issue in Microsoft's Power Apps platform, which uses AI for app development, led to the exposure of 38 million records containing sensitive information from various organizations.",
+    "category": "data leak"
+  },
+  {
+    "id": "aisec-9",
+    "title": "Verkada AI-Powered Camera System Hack",
+    "region": "Global",
+    "date": "March 2021",
+    "link": "https://www.bloomberg.com/news/articles/2021-03-09/hackers-expose-tesla-jails-in-breach-of-150-000-security-cams",
+    "summary": "Hackers gained access to Verkada's AI-powered camera systems, exposing live feeds from 150,000 security cameras in various locations including Tesla factories, hospitals, and schools.",
+    "category": "hack"
+  },
+  {
+    "id": "aisec-10",
+    "title": "SAP AI Core Vulnerabilities",
+    "region": "Global",
+    "date": "July 2024",
+    "link": "https://thehackernews.com/2024/07/sap-ai-core-vulnerabilities-expose.html",
+    "summary": "Multiple vulnerabilities were discovered in SAP AI Core, potentially exposing sensitive data and allowing unauthorized access. These flaws could lead to information disclosure, privilege escalation, and remote code execution, affecting AI model development and deployment.",
+    "category": "vulnerability"
+  },
+  {
+    "id": "aisec-11",
+    "title": "Italian Data Protection Authority Accuses ChatGPT of Privacy Violations",
+    "region": "Italy",
+    "date": "January 2024",
+    "link": "https://thehackernews.com/2024/01/italian-data-protection-watchdog.html",
+    "summary": "Italy's data protection authority (DPA) has notified OpenAI, the creator of ChatGPT, of potential violations of EU GDPR privacy laws. The allegations stem from a multi-month investigation and are related to the collection of personal data and age protections. OpenAI has been given 30 days to respond to these accusations.",
+    "category": "privacy breach"
+  },
+  {
+    "id": "aisec-12",
+    "title": "Meta Halts AI Training on EU User Data Amid Privacy Concerns",
+    "region": "European Union",
+    "date": "June 2024",
+    "link": "https://thehackernews.com/2024/06/meta-halts-ai-training-on-eu-user-data.html",
+    "summary": "Meta has paused its efforts to train large language models using public content from EU users on Facebook and Instagram following a request from the Irish Data Protection Commission. The company planned to use personal data for AI training without explicit user consent, relying on 'Legitimate Interests' as the legal basis. This delay affects Meta's AI development plans in Europe and has sparked debates about GDPR compliance and user privacy.",
+    "category": "privacy breach"
+  },
+  {
+    "id": "aisec-13",
+    "title": "Meta Halts AI Use in Brazil Following Data Protection Authority's Ban",
+    "region": "Brazil",
+    "date": "July 2024",
+    "link": "https://thehackernews.com/2024/07/meta-halts-ai-use-in-brazil-following.html",
+    "summary": "Meta has suspended the use of generative AI in Brazil after the country's National Data Protection Authority (ANPD) issued a preliminary ban on its new privacy policy. The ANPD objected to Meta's policy that would grant access to users' personal data for AI training. Meta is in talks with ANPD to address concerns, facing potential daily fines of 50,000 reais (about $9,100) for non-compliance.",
+    "category": "privacy breach"
+  },
+  {
+    "id": "aisec-14",
+    "title": "Microsoft Delays Windows Recall Amid Privacy and Security Concerns",
+    "region": "Global",
+    "date": "June 2024",
+    "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-delays-windows-recall-amid-privacy-and-security-concerns/",
+    "summary": "Microsoft has delayed the release of its AI-powered Windows Recall feature due to privacy and security concerns. Initially planned for public preview on June 18 with new Copilot+ AI PCs, the feature will now be first available to Windows Insiders for testing. Windows Recall takes screenshots every few seconds and uses AI to analyze and index them, raising concerns about data theft and privacy. Microsoft has made it an opt-in feature and added Windows Hello authentication, but experts still warn of potential security risks.",
+    "category": "privacy breach"
+  },
+  {
+    "id": "aisec-15",
+    "title": "X Faces GDPR Complaints for Unauthorized Use of Data for AI Training",
+    "region": "European Union",
+    "date": "August 2024",
+    "link": "https://www.bleepingcomputer.com/news/artificial-intelligence/x-faces-gdpr-complaints-for-unauthorized-use-of-data-for-ai-training/",
+    "summary": "European privacy advocate NOYB has filed nine GDPR complaints against X (formerly Twitter) for using personal data from over 60 million European users to train its 'Grok' AI model without informing users or obtaining consent. The unauthorized training occurred between May 7 and August 1, 2024. NOYB seeks a full investigation into X's data practices and questions why X is not prompting EU-based users for permission to use their data for AI training.",
+    "category": "privacy breach"
+  },
+  {
+    "id": "aisec-16",
+    "title": "UK School Reprimanded for Unlawful Use of Facial Recognition Technology",
+    "region": "UK",
+    "date": "July 2024",
+    "link": "https://techcrunch.com/2024/07/23/uk-school-reprimanded-for-unlawful-use-of-facial-recognition-technology/",
+    "summary": "Chelmer Valley High School in Essex, UK, has been formally reprimanded by the Information Commissioner's Office (ICO) for using facial recognition technology without proper consent from students. The school introduced the technology for cashless lunch payments in March 2023 but failed to conduct a required data protection impact assessment beforehand. The ICO criticized the school's opt-out approach, which violates UK GDPR requirements for clear affirmative consent, especially for processing biometric data of children.",
+    "category": "privacy breach"
+  },
+  {
+    "id": "aisec-17",
+    "title": "Photos of Australian Kids Found in Massive AI Training Data Set",
+    "region": "Australia",
+    "date": "July 2024",
+    "link": "https://www.unsw.edu.au/newsroom/news/2024/07/photos-Australian-kids-massive-AI-dataset",
+    "summary": "Human Rights Watch discovered photos of Australian children in the LAION-5B data set, used to train AI models for image generation. This massive data set, containing links to 5.85 billion images, was created by scraping publicly available internet content without consent. The incident raises concerns about privacy law violations and the need for stronger enforcement of data protection regulations. Experts argue that publicly available information can still be considered personal information under Australian privacy laws.",
+    "category": "privacy breach"
+  },
+  {
+    "id": "aisec-18",
+    "title": "Victorian Case Worker Used ChatGPT to Draft Child Protection Report",
+    "region": "Australia",
+    "date": "September 2024",
+    "link": "https://www.itnews.com.au/news/vic-case-worker-used-chatgpt-to-draft-child-protection-report-611904",
+    "summary": "A child protection worker in Victoria, Australia, used ChatGPT to draft a report submitted to the Children's Court, containing inaccurate personal information that downplayed risks to a child. The Office of the Victorian Information Commissioner (OVIC) found that sensitive case information was entered into ChatGPT, violating privacy rules. The Department of Families, Fairness and Housing has been directed to ban and block access to generative AI tools. An internal review identified 100 cases with indicators of ChatGPT use in drafting child protection documents over a one-year period.",
+    "category": "privacy breach"
+  },
+  {
+    "id": "aisec-19",
+    "title": "Meta Under Fire for Scraping Australian Data for AI Development Without Opt-Out Option",
+    "region": "Australia",
+    "date": "September 2024",
+    "link": "https://www.cyberdaily.au/digital-transformation/11095-meta-under-fire-for-scraping-australian-data-for-ai-development-without-opt-out-option?highlight=WyJhaSJd",
+    "summary": "Meta has admitted to scraping data from public Facebook and Instagram accounts of Australian users, including photos and text, to train its AI models without providing an opt-out option. This practice includes data from accounts dating back to 2007, and even public photos of children. While European users have been given an opt-out option due to regulatory uncertainty, Australian users can only make their accounts private to avoid data scraping. The revelation came during questioning by Australian senators and has raised concerns about privacy and data protection in AI development.",
+    "category": "privacy breach"
+  },
+  {
+    "id": "aisec-20",
+    "title": "Privacy Regulator Probes I-MED for Sharing Patient Data with harrison.ai",
+    "region": "Australia",
+    "date": "September 2024",
+    "link": "https://www.crikey.com.au/2024/09/23/privacy-regulator-oaic-imed-harrisonai-patient-medical-scan-data/",
+    "summary": "The Office of the Australian Information Commissioner (OAIC) is investigating I-MED Radiology Network for providing private medical scans to harrison.ai for AI training without patient knowledge. The OAIC is examining whether I-MED complied with Australian privacy principles. While both companies claim data was de-identified, the OAIC warns this may not fully remove privacy risks. The investigation follows I-MED's silence on the matter and harrison.ai's attempts to distance itself from consent issues.",
+    "category": "privacy breach"
+  },
+  {
+    "id": "aisec-21",
+    "title": "Hacked AI Girlfriend Data Shows Prompts Describing Child Sexual Abuse",
     "region": "Global",
     "date": "October 2024",
-    "link":"https://www.404media.co/hacked-ai-girlfriend-data-shows-prompts-describing-child-sexual-abuse-2/",
+    "link": "https://www.404media.co/hacked-ai-girlfriend-data-shows-prompts-describing-child-sexual-abuse-2/",
     "summary": "A popular AI girlfriend app experienced a data breach, exposing user data and chat logs. The leaked data revealed concerning user behavior, including attempts to engage the AI in discussions about illegal activities. The incident highlighted issues of data security and ethical concerns in AI companion apps.",
-    "cateogry": "data breach"
-    },
-    {"id": "aisec-22",
+    "category": "data leak"
+  },
+  {
+    "id": "aisec-22",
     "title": "SEEK is training AI on user data, according to a little-noticed privacy policy update",
-    "region": "Autralia",
+    "region": "Australia",
     "date": "October 2024",
-    "link":"https://www.crikey.com.au/2024/10/15/seek-training-artificial-intelligence-user-data/",
+    "link": "https://www.crikey.com.au/2024/10/15/seek-training-artificial-intelligence-user-data/",
     "summary": "Seek.com.au, a major job search platform, was found to be using user data to train its AI systems without explicit user consent. The data included job applications, resumes, and other sensitive information. This raised concerns about data privacy, consent, and the ethical use of personal information in AI development.",
-    "cateogry": "privacy breach"
-    }
-    
+    "category": "privacy breach"
+  }
 ]
