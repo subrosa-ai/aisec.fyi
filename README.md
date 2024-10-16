@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AISec.fyi
+⚡ A curated list of security risks and breaches associated with Artificial Intelligence.
+
+We aim to provide a comprehensive resource for security professionals, AI developers, researchers and the general public to stay informed about latest AI security, safety issues and related breaches.
+
+## Contributing Guidelines
+We welcome contributions to enhance the project and AI security related report! Please follow these guidelines:
+
+1. **Fork the repository**: Create your own fork of the repository.
+2. **Create a new branch**: Use a descriptive name for your branch (e.g., `feature/add-feature`, `aisecnews/new-ai-breach`, `enhance/add-detail-to-aisec-1`).
+3. **Make your changes**: Implement your feature or fix.
+4. **Test locally**: Ensure your changes are covered by tests.
+5. **Submit a pull request**: Describe your changes and reference any related issues.
+
+## Submit new AI breach news
+You can contribute new AI breaches and risk news at `src/data/updates.json` following existing JSON object format, and create PR for review.
 
 ## Getting Started
-
-First, run the development server:
+This project is made of Next.js and deployed on Netlify, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
 bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+This project is licensed under the GNU General Public License v3.0 License - see the [LICENSE](LICENSE.md) file for details.

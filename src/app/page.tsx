@@ -6,7 +6,7 @@ import { z } from "zod"
 
 import { columns } from "@/components/parts/columns"
 import { DataTable } from "@/components/parts/data-table"
-import { aiSecNewschema } from "@/data/schema"
+import { aiSecNewschema, aiSecNewschemaType } from "@/data/schema"
 import logo from '@/app/logo.png'
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -18,7 +18,7 @@ async function getaiSecNews() {
   )
 
   const aiSecNews = JSON.parse(data.toString())
-  const dataInOrder = aiSecNews.sort((a, b) => new Date(b.date) - new Date(a.date))
+  const dataInOrder = aiSecNews.sort((a: aiSecNewschemaType, b: aiSecNewschemaType) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
   return z.array(aiSecNewschema).parse(dataInOrder)
 }
