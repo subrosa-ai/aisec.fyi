@@ -22,7 +22,7 @@ export default function RootLayout({
       >
         {children}
         <footer className="flex items-center px-2 space-x-2">
-          <div className="text-sm text-muted-foreground">Maintain by Subrosa.ai team</div>
+          <div className="text-sm text-muted-foreground">Maintain by <Link href='https://subrosa.ai' className="underline" target="_blank" rel="noopener">Subrosa.ai</Link> team</div>
           <div className="flex items-center space-x-2">
             <Button asChild variant="link" className="flex h-8 w-8 p-0">
               <Link href='https://github.com/subrosa-ai/aisec.fyi' target="_blank" rel="noopener noreferrer">
