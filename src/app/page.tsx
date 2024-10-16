@@ -18,8 +18,9 @@ async function getaiSecNews() {
   )
 
   const aiSecNews = JSON.parse(data.toString())
+  const dataInOrder = aiSecNews.sort((a, b) => new Date(b.date) - new Date(a.date))
 
-  return z.array(aiSecNewschema).parse(aiSecNews)
+  return z.array(aiSecNewschema).parse(dataInOrder)
 }
 
 export default async function LeakPage() {

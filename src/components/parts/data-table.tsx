@@ -50,10 +50,7 @@ export function DataTable<TData, TValue>({
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   )
-  const [sorting, setSorting] = React.useState<SortingState>([{
-    id: 'date',
-    desc: true
-  }])
+
   const [expanded, setExpanded] = React.useState<ExpandedState>({})
   const searchParams = useSearchParams()
 
@@ -65,10 +62,9 @@ export function DataTable<TData, TValue>({
       if (rowId && isExpanded === 'true') {
         const rowIndex = data.findIndex(item => (item as any).id === rowId); // Find the index of the item
         const pageSize = table.getState().pagination.pageSize;
-        const targetPage = table.getPageCount() - Math.floor(rowIndex / pageSize); // Calculate the target page
+        const targetPage = Math.floor(rowIndex / pageSize); // Calculate the target page
         const currentPage = table.getState().pagination.pageIndex; // Get the current page index
 
-        console.log(`targetPage ${targetPage} currentPage ${currentPage}`)
         if (currentPage !== targetPage) {
           setExpanded({ [rowId]: true });
           table.setPageIndex(targetPage - 1); // Update the table's page index
@@ -86,7 +82,7 @@ export function DataTable<TData, TValue>({
   React.useEffect(() => {
     const expandedRowIds = Object.keys(expanded);
     const expandedRowId = expandedRowIds.length > 0 ? expandedRowIds[0] : undefined;
-
+    console.log('expadned', expandedRowId)
     if (expandedRowId) {
       const params = new URLSearchParams(window.location.search);
       params.set('rowId', expandedRowId); // Use rowId instead of expandedRowId
@@ -104,7 +100,6 @@ export function DataTable<TData, TValue>({
     data: data,
     columns,
     state: {
-      sorting,
       columnVisibility,
       rowSelection,
       columnFilters,
@@ -112,7 +107,6 @@ export function DataTable<TData, TValue>({
     },
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
-    onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
     onExpandedChange: setExpanded,
@@ -123,7 +117,7 @@ export function DataTable<TData, TValue>({
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
     getRowCanExpand: () => true,
-    enableSorting: true,
+    enableSorting: false,
     getRowId: (row, relativeIndex, parent) => {
       return (row as any).id;
     }
