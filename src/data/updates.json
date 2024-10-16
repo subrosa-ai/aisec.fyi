@@ -186,6 +186,14 @@
     "link":"https://www.404media.co/hacked-ai-girlfriend-data-shows-prompts-describing-child-sexual-abuse-2/",
     "summary": "A popular AI girlfriend app experienced a data breach, exposing user data and chat logs. The leaked data revealed concerning user behavior, including attempts to engage the AI in discussions about illegal activities. The incident highlighted issues of data security and ethical concerns in AI companion apps.",
     "cateogry": "data breach"
+    },
+    {"id": "aisec-22",
+    "title": "SEEK is training AI on user data, according to a little-noticed privacy policy update",
+    "region": "Autralia",
+    "date": "October 2024",
+    "link":"https://www.crikey.com.au/2024/10/15/seek-training-artificial-intelligence-user-data/",
+    "summary": "Seek.com.au, a major job search platform, was found to be using user data to train its AI systems without explicit user consent. The data included job applications, resumes, and other sensitive information. This raised concerns about data privacy, consent, and the ethical use of personal information in AI development.",
+    "cateogry": "privacy breach"
     }
     
 ]
