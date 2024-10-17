@@ -82,7 +82,6 @@ export function DataTable<TData, TValue>({
   React.useEffect(() => {
     const expandedRowIds = Object.keys(expanded);
     const expandedRowId = expandedRowIds.length > 0 ? expandedRowIds[0] : undefined;
-    console.log('expadned', expandedRowId)
     if (expandedRowId) {
       const params = new URLSearchParams(window.location.search);
       params.set('rowId', expandedRowId); // Use rowId instead of expandedRowId

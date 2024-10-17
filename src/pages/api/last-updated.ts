@@ -37,7 +37,6 @@ function getLatestCommitDate(): Promise<string> {
       // On end of response
       res.on('end', () => {
         const commits = JSON.parse(data);
-        console.log(commits[0].commit.committer)
         if (commits.length > 0) {
           resolve(commits[0].commit.committer.date);
         } else {
