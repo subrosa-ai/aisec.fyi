@@ -40,7 +40,7 @@ export default async function LeakPage() {
               Here&apos;s a list of AI security, privacy breach, data leak and other related information
             </p>
             <Button asChild variant="link" className="p-0 h-auto underline">
-              <Link href='wip' target="_blank" rel="noopener">
+              <Link href='https://github.com/subrosa-ai/aisec.fyi/pulls' target="_blank" rel="noopener">
                 Submit AI Security Issue
               </Link>
             </Button>

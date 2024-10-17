@@ -1,6 +1,8 @@
 # AISec.fyi
 ⚡ A curated list of security risks and breaches associated with Artificial Intelligence.
 
+![logo](/public/ai-sec.png)
+
 We aim to provide a comprehensive resource for security professionals, AI developers, researchers and the general public to stay informed about latest AI security, safety issues and related breaches.
 
 ## Contributing Guidelines
@@ -13,7 +15,7 @@ We welcome contributions to enhance the project and AI security related report! 
 5. **Submit a pull request**: Describe your changes and reference any related issues.
 
 ## Submit new AI breach news
-You can contribute new AI breaches and risk news at `src/data/updates.json` following existing JSON object format, and create PR for review.
+You can contribute new AI breaches and risk news at [src/data/updates.json](https://github.com/subrosa-ai/aisec.fyi/blob/master/src/data/updates.json) following existing JSON object format, and create PR for review.
 
 ## Getting Started
 This project is made of Next.js and deployed on Netlify, run the development server:

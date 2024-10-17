@@ -8,7 +8,22 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "AISec.fyi",
-  description: "AI security, privacy breach, data leak and other related information"
+  description: "AI security, privacy breach, data leak and other related information",
+  icons: [
+    {
+      media: "(prefers-color-scheme: light)",
+      url: 'icon-light.svg',
+      type: "image/svg+xml",
+    },
+    {
+      media: "(prefers-color-scheme: dark)",
+      url: 'icon-dark.svg',
+      type: "image/svg+xml",
+    },
+  ],
+  openGraph: {
+    images: 'ai-sec.png'
+  }
 };
 
 export default function RootLayout({
@@ -22,7 +37,7 @@ export default function RootLayout({
       >
         {children}
         <footer className="flex items-center px-2 space-x-2">
-          <div className="text-sm text-muted-foreground">Maintain by Subrosa.ai team</div>
+          <div className="text-sm text-muted-foreground">Maintain by <Link href='https://subrosa.ai' className="underline" target="_blank" rel="noopener">Subrosa.ai</Link> team</div>
           <div className="flex items-center space-x-2">
             <Button asChild variant="link" className="flex h-8 w-8 p-0">
               <Link href='https://github.com/subrosa-ai/aisec.fyi' target="_blank" rel="noopener noreferrer">
