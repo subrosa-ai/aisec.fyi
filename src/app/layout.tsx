@@ -8,7 +8,22 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "AISec.fyi",
-  description: "AI security, privacy breach, data leak and other related information"
+  description: "AI security, privacy breach, data leak and other related information",
+  icons: [
+    {
+      media: "(prefers-color-scheme: light)",
+      url: 'icon-light.svg',
+      type: "image/svg+xml",
+    },
+    {
+      media: "(prefers-color-scheme: dark)",
+      url: 'icon-dark.svg',
+      type: "image/svg+xml",
+    },
+  ],
+  openGraph: {
+    images: 'ai-sec.png'
+  }
 };
 
 export default function RootLayout({
