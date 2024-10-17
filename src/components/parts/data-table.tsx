@@ -127,7 +127,7 @@ export function DataTable<TData, TValue>({
     <div className="space-y-4">
       <DataTableToolbar table={table} />
       <div className="rounded-md border">
-        <Table className="min-w-full divide-y divide-gray-200 block md:table">
+        <Table className="min-w-full divide-y divide-gray-200 flex md:table">
           <TableHeader className="hidden md:table-header-group">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id} className="md:table-row">
