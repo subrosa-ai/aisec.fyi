@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { useSearchParams } from 'next/navigation'
+import * as React from "react";
+import { useSearchParams } from "next/navigation";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -16,7 +16,7 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table"
+} from "@tanstack/react-table";
 
 import {
   Table,
@@ -25,75 +25,35 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 
-import { DataTablePagination } from "./data-table-pagination"
-import { DataTableToolbar } from "./data-table-toolbar"
+import { DataTablePagination } from "./data-table-pagination";
+import { DataTableToolbar } from "./data-table-toolbar";
 
-import Link from "next/link"
-import { Button } from "../ui/button"
-import { aiSecNewschemaType } from "@/data/schema"
+import Link from "next/link";
+import { Button } from "../ui/button";
+import { aiSecNewschemaType } from "@/data/schema";
 
 interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
-  const [rowSelection, setRowSelection] = React.useState({})
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({
-    summary: false, // Hide the summary column
-  })
+  const [rowSelection, setRowSelection] = React.useState({});
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({
+      summary: false, // Hide the summary column
+    });
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
-  )
+  );
 
-  const [expanded, setExpanded] = React.useState<ExpandedState>({})
-  const searchParams = useSearchParams()
-
-  React.useEffect(() => {
-    if (searchParams) {
-      const rowId = searchParams.get('rowId');
-      const isExpanded = searchParams.get('expanded');
-
-      if (rowId && isExpanded === 'true') {
-        const rowIndex = data.findIndex(item => (item as any).id === rowId); // Find the index of the item
-        const pageSize = table.getState().pagination.pageSize;
-        const targetPage = Math.floor(rowIndex / pageSize); // Calculate the target page
-        const currentPage = table.getState().pagination.pageIndex; // Get the current page index
-
-        if (currentPage !== targetPage) {
-          setExpanded({ [rowId]: true });
-          table.setPageIndex(targetPage - 1); // Update the table's page index
-        } else {
-          setExpanded({ [rowId]: true });
-          setTimeout(() => {
-            const element = document.getElementById(`row-${rowId}`);
-            if (element) element.scrollIntoView({ behavior: 'smooth' });
-          }, 100);
-        }
-      }
-    }
-  }, [searchParams, data]);
-
-  React.useEffect(() => {
-    const expandedRowIds = Object.keys(expanded);
-    const expandedRowId = expandedRowIds.length > 0 ? expandedRowIds[0] : undefined;
-    if (expandedRowId) {
-      const params = new URLSearchParams(window.location.search);
-      params.set('rowId', expandedRowId); // Use rowId instead of expandedRowId
-      params.set('expanded', 'true');
-      window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
-    } else {
-      const params = new URLSearchParams(window.location.search);
-      params.delete('rowId');
-      params.delete('expanded');
-      window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
-    }
-  }, [expanded])
+  const [expanded, setExpanded] = React.useState<ExpandedState>({});
+  const searchParams = useSearchParams();
 
   const table = useReactTable({
     data: data,
@@ -119,8 +79,58 @@ export function DataTable<TData, TValue>({
     enableSorting: false,
     getRowId: (row, relativeIndex, parent) => {
       return (row as any).id;
+    },
+  });
+
+  React.useEffect(() => {
+    if (searchParams) {
+      const rowId = searchParams.get("rowId");
+      const isExpanded = searchParams.get("expanded");
+
+      if (rowId && isExpanded === "true") {
+        const rowIndex = data.findIndex((item) => (item as any).id === rowId); // Find the index of the item
+        const pageSize = table.getState().pagination.pageSize;
+        const targetPage = Math.floor(rowIndex / pageSize); // Calculate the target page
+        const currentPage = table.getState().pagination.pageIndex; // Get the current page index
+
+        if (currentPage !== targetPage) {
+          setExpanded({ [rowId]: true });
+          table.setPageIndex(targetPage - 1); // Update the table's page index
+        } else {
+          setExpanded({ [rowId]: true });
+          setTimeout(() => {
+            const element = document.getElementById(`row-${rowId}`);
+            if (element) element.scrollIntoView({ behavior: "smooth" });
+          }, 100);
+        }
+      }
     }
-  })
+  }, [searchParams, data, table]);
+
+  React.useEffect(() => {
+    const expandedRowIds = Object.keys(expanded);
+    const expandedRowId =
+      expandedRowIds.length > 0 ? expandedRowIds[0] : undefined;
+    if (expandedRowId) {
+      const params = new URLSearchParams(window.location.search);
+      params.set("rowId", expandedRowId); // Use rowId instead of expandedRowId
+      params.set("expanded", "true");
+      window.history.replaceState(
+        {},
+        "",
+        `${window.location.pathname}?${params}`
+      );
+    } else {
+      const params = new URLSearchParams(window.location.search);
+      params.delete("rowId");
+      params.delete("expanded");
+      window.history.replaceState(
+        {},
+        "",
+        `${window.location.pathname}?${params}`
+      );
+    }
+  }, [expanded]);
 
   return (
     <div className="space-y-4">
@@ -132,15 +142,19 @@ export function DataTable<TData, TValue>({
               <TableRow key={headerGroup.id} className="md:table-row">
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id} colSpan={header.colSpan} className="md:table-cell">
+                    <TableHead
+                      key={header.id}
+                      colSpan={header.colSpan}
+                      className="md:table-cell"
+                    >
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
                     </TableHead>
-                  )
+                  );
                 })}
               </TableRow>
             ))}
@@ -160,7 +174,8 @@ export function DataTable<TData, TValue>({
                         className="block md:table-cell p-2"
                         data-label={cell.column.columnDef.id} // Add data-label for mobile
                         style={{
-                          width: cell.column.id === 'expander' ? '10px' : 'unset'
+                          width:
+                            cell.column.id === "expander" ? "10px" : "unset",
                         }}
                       >
                         {flexRender(
@@ -179,11 +194,20 @@ export function DataTable<TData, TValue>({
                             <div>
                               <h4 className="font-semibold mb-2">Summary</h4>
                               <p className="mb-2 text-sm text-muted-foreground">
-                                {(row.original as any).summary ?? 'No summary available'}
+                                {(row.original as any).summary ??
+                                  "No summary available"}
                               </p>
                               {(row.original as any).link && (
-                                <Button asChild variant="link" className="p-0 h-auto underline">
-                                  <Link href={(row.original as any).link} target="_blank" rel="noopener noreferrer">
+                                <Button
+                                  asChild
+                                  variant="link"
+                                  className="p-0 h-auto underline"
+                                >
+                                  <Link
+                                    href={(row.original as any).link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
                                     Source
                                   </Link>
                                 </Button>
@@ -211,5 +235,5 @@ export function DataTable<TData, TValue>({
       </div>
       <DataTablePagination table={table} />
     </div>
-  )
+  );
 }

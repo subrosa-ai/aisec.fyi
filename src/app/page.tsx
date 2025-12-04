@@ -3,6 +3,7 @@ import path from "path"
 import { Metadata } from "next"
 import Image from "next/image"
 import { z } from "zod"
+import { Suspense } from "react"
 
 import { columns } from "@/components/parts/columns"
 import { DataTable } from "@/components/parts/data-table"
@@ -46,7 +47,9 @@ export default async function LeakPage() {
             </Button>
           </div>
         </div>
-        <DataTable data={data} columns={columns} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <DataTable data={data} columns={columns} />
+        </Suspense>
       </div>
     </>
   )
