@@ -3,6 +3,7 @@ import path from "path"
 import { Metadata } from "next"
 import Image from "next/image"
 import { z } from "zod"
+import { Suspense } from "react"
 
 import { columns } from "@/components/parts/columns"
 import { DataTable } from "@/components/parts/data-table"
@@ -37,7 +38,7 @@ export default async function LeakPage() {
             </div>
 
             <p className="text-muted-foreground">
-              Here&apos;s a list of AI security, privacy breach, data leak and other related information
+              Here&apos;s a list of AI security incidents, privacy breaches, data leaks and other related information
             </p>
             <Button asChild variant="link" className="p-0 h-auto underline">
               <Link href='https://github.com/subrosa-ai/aisec.fyi/pulls' target="_blank" rel="noopener">
@@ -46,7 +47,9 @@ export default async function LeakPage() {
             </Button>
           </div>
         </div>
-        <DataTable data={data} columns={columns} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <DataTable data={data} columns={columns} />
+        </Suspense>
       </div>
     </>
   )
