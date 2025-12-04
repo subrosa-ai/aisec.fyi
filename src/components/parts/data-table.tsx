@@ -158,7 +158,7 @@ export function DataTable<TData, TValue>({
                       <TableCell
                         key={cell.id}
                         className="block md:table-cell p-2"
-                        data-label={cell.column.columnDef.header} // Add data-label for mobile
+                        data-label={cell.column.columnDef.id} // Add data-label for mobile
                         style={{
                           width: cell.column.id === 'expander' ? '10px' : 'unset'
                         }}
