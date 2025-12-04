@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "AISec.fyi",
-  description: "AI security, privacy breachs, data leaks and other related information",
+  description: "AI security, privacy breaches, data leaks and other related information",
   icons: [
     {
       media: "(prefers-color-scheme: light)",
