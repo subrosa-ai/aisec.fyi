@@ -60,6 +60,7 @@ export function DataTable<TData, TValue>({
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({
       summary: false, // Hide the summary column
+      year: false, // Backs the Year facet in the toolbar; never rendered
     });
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -74,8 +75,27 @@ export function DataTable<TData, TValue>({
     [data]
   );
 
+  // Cluster view: show one incident together with everything it links to
+  // through `related`, so a single campaign reads as one story instead of
+  // rows scattered across 35 pages.
+  const [cluster, setCluster] = React.useState<string | null>(null);
+  const entryById = React.useMemo(
+    () => new Map((data as any[]).map((d) => [d?.id as string, d])),
+    [data]
+  );
+  const rows = React.useMemo(() => {
+    if (!cluster) return data;
+    const seed = entryById.get(cluster);
+    if (!seed) return data;
+    const ids = new Set<string>([
+      seed.id,
+      ...((seed.related ?? []) as string[]),
+    ]);
+    return (data as any[]).filter((d) => ids.has(d.id)) as typeof data;
+  }, [cluster, data, entryById]);
+
   const table = useReactTable({
-    data: data,
+    data: rows,
     columns,
     state: {
       columnVisibility,
@@ -112,6 +132,9 @@ export function DataTable<TData, TValue>({
     const params = new URLSearchParams(window.location.search);
     const rowId = params.get("rowId");
     const isExpanded = params.get("expanded");
+    const clusterId = params.get("cluster");
+
+    if (clusterId) setCluster(clusterId);
 
     if (rowId && isExpanded === "true") {
       const rowIndex = data.findIndex((item) => (item as any).id === rowId); // Find the index of the item
@@ -133,6 +156,31 @@ export function DataTable<TData, TValue>({
     // Runs on mount: restores the expanded row from a shared deep link.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Skip the first run so this does not strip a ?cluster= param out of the URL
+  // before the mount effect above has read it.
+  const clusterSynced = React.useRef(false);
+  React.useEffect(() => {
+    if (!clusterSynced.current) {
+      clusterSynced.current = true;
+      return;
+    }
+    const params = new URLSearchParams(window.location.search);
+    if (cluster) params.set("cluster", cluster);
+    else params.delete("cluster");
+    const query = params.toString();
+    window.history.replaceState(
+      {},
+      "",
+      query ? `${window.location.pathname}?${query}` : window.location.pathname
+    );
+  }, [cluster]);
+
+  const showCluster = (id: string, expand?: string) => {
+    setCluster(id);
+    table.setPageIndex(0);
+    setExpanded(expand ? { [expand]: true } : {});
+  };
 
   React.useEffect(() => {
     const expandedRowIds = Object.keys(expanded);
@@ -161,6 +209,24 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="space-y-4">
+      {cluster && (
+        <div className="flex items-center justify-between gap-2 rounded-md border bg-muted px-3 py-2 text-sm">
+          <span>
+            Showing {table.getFilteredRowModel().rows.length} incidents related
+            to{" "}
+            <span className="font-medium">
+              {titleById.get(cluster) ?? cluster}
+            </span>
+          </span>
+          <Button
+            variant="ghost"
+            className="h-7 px-2"
+            onClick={() => setCluster(null)}
+          >
+            Show all incidents
+          </Button>
+        </div>
+      )}
       <DataTableToolbar table={table} />
       <div className="rounded-md border">
         <Table className="min-w-full divide-y divide-gray-200 flex md:table">
@@ -281,15 +347,29 @@ export function DataTable<TData, TValue>({
                                       (row.original as any).related as string[]
                                     ).map((rid) => (
                                       <li key={rid}>
-                                        <Link
-                                          href={`?rowId=${rid}&expanded=true`}
-                                          className="underline text-muted-foreground"
+                                        <button
+                                          type="button"
+                                          className="underline text-left text-muted-foreground hover:text-foreground"
+                                          onClick={() =>
+                                            showCluster(rid, rid)
+                                          }
                                         >
                                           {titleById.get(rid) ?? rid}
-                                        </Link>
+                                        </button>
                                       </li>
                                     ))}
                                   </ul>
+                                  {cluster !== (row.original as any).id && (
+                                    <Button
+                                      variant="link"
+                                      className="mt-1 h-auto p-0 text-xs underline"
+                                      onClick={() =>
+                                        showCluster((row.original as any).id)
+                                      }
+                                    >
+                                      Show this cluster on its own
+                                    </Button>
+                                  )}
                                 </div>
                               )}
                             </div>

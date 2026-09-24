@@ -56,6 +56,9 @@ The job should draft an entry in the existing format and leave the link for a hu
 
 ## 5. Site ideas
 
-- Filter or group by year, and a timeline view — the 2026 agent incidents read as one story.
-- Surface `related` as a cluster view (for example every incident traced to one evaluation vendor, or the OpenAI agent chain from May to September 2026).
-- Show the gap between `incidentDate` and `date` in the table; disclosure lag is one of the more useful things this data shows.
+Shipped: the Year facet, the `?cluster=` related view, and the disclosure-lag line under each date. Still open:
+
+- A timeline view. The Year facet narrows the table, but the 2026 agent incidents really want a horizontal axis with `incidentDate` and `date` as two marks per incident.
+- Sortable columns. `enableSorting` is false on the table, so ordering is fixed newest-first; a lag sort ("what was sat on longest?") would be a good reason to turn it back on.
+- Cluster permalinks in the share menu, so the row-action share button can offer "copy link to this cluster" alongside the single-incident link.
+- Clusters are seeded from one entry, so `?cluster=aisec-320` shows that entry plus its `related`. A cluster that is more than one hop deep would need a transitive walk.

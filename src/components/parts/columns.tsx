@@ -12,7 +12,16 @@ import { aiSecNewschemaType } from "../../data/schema"
 import { DataTableColumnHeader } from "./data-table-column-header"
 import { DataTableRowActions } from "./data-table-row-actions"
 import { Button } from "../ui/button"
-import { parse } from "date-fns"
+import { differenceInCalendarMonths, parse } from "date-fns"
+
+const asMonth = (value: string) => parse(value, "MMMM yyyy", new Date())
+
+// How long an incident stayed unpublished, in whole months.
+function disclosureLag(incidentDate?: string, date?: string) {
+  if (!incidentDate || !date) return 0
+  const lag = differenceInCalendarMonths(asMonth(date), asMonth(incidentDate))
+  return Number.isFinite(lag) && lag > 0 ? lag : 0
+}
 
 export const columns: ColumnDef<aiSecNewschemaType>[] = [
   {
@@ -106,9 +115,20 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
       <DataTableColumnHeader column={column} title="Date" className="w-[150px]"/>
     ),
     cell: ({ row }) => {
+      const incidentDate = row.original.incidentDate
+      const lag = disclosureLag(incidentDate, row.original.date)
+
       return (
-        <div className="flex items-center">
+        <div className="flex flex-col">
           <span>{row.getValue("date")}</span>
+          {lag > 0 && (
+            <span
+              className="text-xs text-muted-foreground"
+              title={`Happened ${incidentDate}, disclosed ${row.original.date}`}
+            >
+              {lag} {lag === 1 ? "month" : "months"} after {incidentDate}
+            </span>
+          )}
         </div>
       )
     },
@@ -117,6 +137,16 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
       const dateB = parse(rowB.getValue(columnId), "MMMM yyyy", new Date())
       return dateA.getTime() - dateB.getTime()
     },
+  },
+  {
+    // Not rendered: it exists so the toolbar can offer a Year facet.
+    id: "year",
+    accessorFn: (row) => String(row.date ?? "").split(" ")[1] ?? "",
+    header: () => null,
+    cell: () => null,
+    enableHiding: true,
+    enableSorting: false,
+    filterFn: (row, id, value) => value.includes(row.getValue(id)),
   },
   {
     id: "actions",

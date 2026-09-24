@@ -16,13 +16,27 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 
+const MONTHS = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+]
+
+function monthKey(date: string) {
+  const [month, year] = String(date).split(" ")
+  return Number(year) * 12 + MONTHS.indexOf(month)
+}
+
 async function getaiSecNews() {
   const data = await fs.readFile(
     path.join(process.cwd(), "src/data/updates.json")
   )
 
   const aiSecNews = JSON.parse(data.toString())
-  const dataInOrder = aiSecNews.sort((a: aiSecNewschemaType, b: aiSecNewschemaType) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  // "Month YYYY" is not a format Date() is required to understand, so order on
+  // the parsed month rather than leaving it to the engine's date heuristics.
+  const dataInOrder = aiSecNews.sort(
+    (a: aiSecNewschemaType, b: aiSecNewschemaType) => monthKey(b.date) - monthKey(a.date)
+  )
 
   return z.array(aiSecNewschema).parse(dataInOrder)
 }

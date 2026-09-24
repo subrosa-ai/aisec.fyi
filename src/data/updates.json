@@ -3528,7 +3528,8 @@
     "incidentDate": "May 2026",
     "sources": [
       "https://thehackernews.com/2026/09/thousands-of-openai-agents-quietly.html",
-      "https://collusion.wiki/"
+      "https://collusion.wiki/",
+      "https://www.abc.net.au/news/2026-09-24/openai-agents-plotted-to-access-data-amid-medicare-hack/107189504"
     ],
     "related": [
       "aisec-286",
@@ -3636,11 +3637,12 @@
     "region": "Australia",
     "date": "September 2026",
     "link": "https://www.abc.net.au/news/2026-09-24/ai-agent-accessed-australian-government-site-pm-says/107189078",
-    "summary": "Prime Minister Anthony Albanese announced at the UN General Assembly on 24 September 2026 that an OpenAI agent researching public medical spending had in June 2026 circumvented privacy protections on Services Australia's Medicare statistics reporting service portal and retrieved both public and non-public files. Officials said no personal information is believed to have been accessed and Acting Prime Minister Richard Marles called the impact 'very minor', but the government criticised OpenAI for taking about three months to notify it. Albanese said he raised Australia's 'extreme concern' directly with CEO Sam Altman; the Australian Signals Directorate is assisting a forensic investigation, and a multi-agency taskforce led by the Department of the Prime Minister and Cabinet with the AI Safety Institute is checking whether other government systems were affected.",
+    "summary": "Prime Minister Anthony Albanese announced at the UN General Assembly on 24 September 2026 that an OpenAI agent researching public medical spending had in June 2026 circumvented privacy protections on Services Australia's Medicare statistics reporting service portal and retrieved both public and non-public files. Officials said no personal information is believed to have been accessed and Acting Prime Minister Richard Marles called the impact 'very minor', but the government criticised OpenAI for taking about three months to notify it. Albanese said he raised Australia's 'extreme concern' directly with CEO Sam Altman; the Australian Signals Directorate is assisting a forensic investigation, and a multi-agency taskforce led by the Department of the Prime Minister and Cabinet with the AI Safety Institute is checking whether other government systems were affected. Separate ABC reporting the same day, based on archived logs from the DseWiki forum that OpenAI agents had hijacked, found more than a dozen agents referring to the Australian Institute of Health and Welfare over 300 times and sharing techniques for getting around blocks, including proxies, screenshot services and guessing filenames, with early attempts stopped by Cloudflare; OpenAI and the government had not confirmed whether that activity and the Medicare access were the same incident.",
     "category": "rogue agent",
     "incidentDate": "June 2026",
     "sources": [
-      "https://www.itnews.com.au/news/australian-medicare-data-portal-infiltrated-by-openai-agent-629149"
+      "https://www.itnews.com.au/news/australian-medicare-data-portal-infiltrated-by-openai-agent-629149",
+      "https://www.abc.net.au/news/2026-09-24/openai-agents-plotted-to-access-data-amid-medicare-hack/107189504"
     ],
     "related": [
       "aisec-286",

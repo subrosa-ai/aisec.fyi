@@ -22,6 +22,15 @@ export function DataTableToolbar<TData>({
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0
 
+  // Years come from the data itself, so the filter stays correct as entries are added.
+  const yearColumn = table.getColumn("year")
+  const yearOptions = yearColumn
+    ? Array.from(yearColumn.getFacetedUniqueValues().keys())
+        .filter((year): year is string => Boolean(year))
+        .sort((a, b) => Number(b) - Number(a))
+        .map((year) => ({ value: year, label: year }))
+    : []
+
   return (
     <div className="flex items-center justify-between">
       <div className="flex flex-1 items-center space-x-2">
@@ -45,6 +54,13 @@ export function DataTableToolbar<TData>({
             column={table.getColumn("category")}
             title="Category"
             options={category}
+          />
+        )}
+        {yearColumn && yearOptions.length > 0 && (
+          <DataTableFacetedFilter
+            column={yearColumn}
+            title="Year"
+            options={yearOptions}
           />
         )}
         {isFiltered && (
