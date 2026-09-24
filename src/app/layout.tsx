@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import "./globals.css";
-import { GitHubLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
+import { EnvelopeClosedIcon, GitHubLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import { Toaster } from "@/components/ui/toaster";
 import Link from "next/link";
@@ -48,6 +48,11 @@ export default function RootLayout({
             <Button asChild variant="link" className="flex h-8 w-8 p-0">
               <Link href='https://x.com/SubrosaAi' target="_blank" rel="noopener noreferrer">
                 <TwitterLogoIcon className="h-4 w-4" />
+              </Link>
+            </Button>
+            <Button asChild variant="link" className="flex h-8 w-8 p-0">
+              <Link href='mailto:aisecfyi@subrosa.ai' aria-label="Email AISec.fyi">
+                <EnvelopeClosedIcon className="h-4 w-4" />
               </Link>
             </Button>
           </div>

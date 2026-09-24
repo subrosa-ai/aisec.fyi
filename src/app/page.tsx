@@ -8,6 +8,7 @@ import { Suspense } from "react"
 import { columns } from "@/components/parts/columns"
 import { DataTable } from "@/components/parts/data-table"
 import { aiSecNewschema, aiSecNewschemaType } from "@/data/schema"
+import { getLastUpdated } from "@/lib/last-updated"
 import logo from '@/app/logo.png'
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -26,6 +27,7 @@ async function getaiSecNews() {
 
 export default async function LeakPage() {
   const data = await getaiSecNews()
+  const lastUpdated = await getLastUpdated()
 
   return (
     <>
@@ -48,7 +50,7 @@ export default async function LeakPage() {
           </div>
         </div>
         <Suspense fallback={<div>Loading...</div>}>
-          <DataTable data={data} columns={columns} />
+          <DataTable data={data} columns={columns} lastUpdated={lastUpdated} />
         </Suspense>
       </div>
     </>

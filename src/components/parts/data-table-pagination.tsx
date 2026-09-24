@@ -14,26 +14,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { useEffect, useState } from "react"
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>
+  /** Resolved at build time; see src/lib/last-updated.ts */
+  lastUpdated: string
 }
 
 export function DataTablePagination<TData>({
   table,
+  lastUpdated,
 }: DataTablePaginationProps<TData>) {
-  const [lastUpdated, setLastUpdated] = useState<string>("")
-
-  useEffect(() => {
-    const fetchLastUpdatedTime = async () => {
-      const response = await fetch("/api/last-updated")
-      const data = await response.json()
-      setLastUpdated(data.lastUpdated)
-    }
-    fetchLastUpdatedTime()
-  }, [])
-
   return (
     <div className="flex items-center justify-between px-2">
       <div className="flex-1 text-sm text-muted-foreground">

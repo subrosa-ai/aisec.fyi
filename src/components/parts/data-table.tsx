@@ -37,11 +37,14 @@ import { aiSecNewschemaType } from "@/data/schema";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  /** Resolved at build time; see src/lib/last-updated.ts */
+  lastUpdated: string;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  lastUpdated,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
@@ -233,7 +236,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <DataTablePagination table={table} />
+      <DataTablePagination table={table} lastUpdated={lastUpdated} />
     </div>
   );
 }
