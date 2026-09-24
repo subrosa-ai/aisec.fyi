@@ -3952,5 +3952,23 @@
       "aisec-244",
       "aisec-346"
     ]
+  },
+  {
+    "id": "aisec-348",
+    "title": "eSafety warns UK 'nudify' operator over AI sexual images of Australian school students",
+    "region": "Australia",
+    "date": "September 2025",
+    "link": "https://www.esafety.gov.au/newsroom/media-releases/esafety-moves-against-services-used-to-nudify-australian-school-children",
+    "summary": "Australia's eSafety Commissioner issued a formal warning to a UK-based company, which it declined to name so as not to promote the services, whose two 'nudify' sites are among the world's most visited AI nude-image services and were drawing about 100,000 Australian visitors a month. eSafety found the services were used by Australian school children to create deepfake image-based abuse of their peers and failed to provide safeguards against the creation of child sexual exploitation material, in breach of an industry standard under the Online Safety Act, while marketing features such as undressing 'any girl' with 'schoolgirl' and 'sex mode' options. Commissioner Julie Inman Grant said the warning was the first step in the enforcement process and that eSafety would seek civil penalties of up to $49.5 million if non-compliance continued. Reports to eSafety's image-based abuse scheme about digitally altered images from people under 18 more than doubled in 18 months, four in five of them targeting females.",
+    "category": "safety incident"
+  },
+  {
+    "id": "aisec-349",
+    "title": "ChatGPT user shown other people's conversations, including support-system credentials",
+    "region": "Global",
+    "date": "January 2024",
+    "link": "https://arstechnica.com/security/2024/01/ars-reader-reports-chatgpt-is-sending-him-conversations-from-unrelated-ai-users/",
+    "summary": "An Ars Technica reader, Chase Whiteside, submitted seven screenshots of conversations that appeared in his ChatGPT history but were not his; two contained multiple username and password pairs for a support system used by employees of a pharmacy prescription-drug portal, along with the name of the app being troubleshooted and the store number where the problem occurred. OpenAI said it treated the episode as an account takeover consistent with credentials being contributed to a 'pool' of identities used to distribute free access, citing logins from Sri Lanka in the same timeframe as the conversations; Whiteside, who logs in from Brooklyn, doubted it, saying his nine-character password was used nowhere else except a Microsoft account. Ars concluded the explanation made the original suspicion of cross-user leakage unlikely, but noted ChatGPT then offered no two-factor authentication and no way to review recent login locations, protections standard on major platforms for years.",
+    "category": "hack"
   }
 ]

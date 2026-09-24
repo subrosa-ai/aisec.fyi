@@ -17,8 +17,6 @@ These are real, well-documented incidents that belong in the catalog. They were 
 | Susie Wiles phone impersonation targeting senators and executives | May 2025 | WSJ, Reuters |
 | Garante €5M fine on Luka Inc. (Replika) | May 2025 | garanteprivacy.it |
 | Garante blocks Clothoff | Oct 2025 | garanteprivacy.it |
-| eSafety (AU) enforcement against nudify services | Sep 2025 | esafety.gov.au |
-| ChatGPT showing other users' conversations and credentials | Jan 2024 | Ars Technica |
 | Zoom and Adobe AI-training terms-of-service backlashes | Aug 2023 / Jun 2024 | The Verge |
 | Czech DeepSeek government ban; ByteDance Trae IDE telemetry after opt-out; Whitebridge AI noyb complaint; Clearview rulings (BC Court of Appeal, US 7th Circuit) | 2025–2026 | euronews.com, theregister.com, biometricupdate.com |
 | IDEsaster; Windsurf CVE-2026-30615; "Comment-and-Control"; Codex CLI RCE; Google Docs "refine" injection; ConfusedPilot | 2023–2026 | vendor advisories |
