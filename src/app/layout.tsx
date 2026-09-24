@@ -8,6 +8,7 @@ import { EnvelopeClosedIcon, GitHubLogoIcon, TwitterLogoIcon } from "@radix-ui/r
 import { Button } from "@/components/ui/button";
 import { Toaster } from "@/components/ui/toaster";
 import { PostHogProvider } from "@/components/providers/posthog-provider";
+import { CopyrightYear } from "@/components/parts/copyright-year";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -43,7 +44,11 @@ export default function RootLayout({
         <PostHogProvider>
           {children}
           <footer className="flex items-center px-2 space-x-2">
-            <div className="text-sm text-muted-foreground">Maintain by <Link href='https://subrosa.ai' className="underline" target="_blank" rel="noopener">Subrosa.ai</Link> team</div>
+            <div className="text-sm text-muted-foreground">
+              Maintain by <Link href='https://subrosa.ai' className="underline" target="_blank" rel="noopener">Subrosa.ai</Link> team
+              {" · "}
+              &copy; 2024&ndash;<CopyrightYear buildYear={new Date().getFullYear()} />
+            </div>
             <div className="flex items-center space-x-2">
               <Button asChild variant="link" className="flex h-8 w-8 p-0">
                 <Link href='https://github.com/subrosa-ai/aisec.fyi' target="_blank" rel="noopener noreferrer">

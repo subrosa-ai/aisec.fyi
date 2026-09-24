@@ -16,7 +16,13 @@
 [build.environment]
   # Next.js 16 requires Node >= 20.9
   NODE_VERSION = "22"
-  BUN_VERSION = "1.4.2"
+
+  # Pinned to the 1.3.x line ON PURPOSE — do not bump to 1.4.x without reading this.
+  # bun 1.4 writes `bun.lock` with "lockfileVersion": 2, which Dependabot cannot
+  # parse yet ("Unsupported bun.lock 'lockfileVersion' 2 ... supports up to 1"),
+  # and every Dependabot PR fails. bun 1.3.14 writes lockfileVersion 1.
+  # Revisit once Dependabot's bun support reaches lockfileVersion 2.
+  BUN_VERSION = "1.3.14"
 
 # The site has no API routes or server rendering, so the runtime's export path
 # emits zero serverless functions — it only copies static output and applies

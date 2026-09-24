@@ -30,6 +30,28 @@ The site is a **static export** (`output: "export"` in `next.config.mjs`) with n
 server-side code, so `next start` does not apply — use `bun run build` and then
 `bun run start` to preview the generated `out/` directory.
 
+### Use bun 1.3.x — not 1.4
+
+This project pins **bun 1.3.14** (see `BUN_VERSION` in [netlify.toml](netlify.toml)).
+
+bun 1.4 writes `bun.lock` with `"lockfileVersion": 2`, which Dependabot cannot
+read yet — every Dependabot PR fails with:
+
+```
+Unsupported bun.lock 'lockfileVersion' 2 in /bun.lock.
+The bun version Dependabot runs supports up to 1.
+```
+
+bun 1.3.14 writes `lockfileVersion: 1`, which Dependabot accepts. Running
+`bun install` with bun 1.4+ will silently rewrite the lockfile to version 2 and
+break Dependabot again, so check `bun.lock` still starts with
+`"lockfileVersion": 1` before committing. Drop the pin once Dependabot supports
+version 2.
+
+The lockfile is plaintext by design — `saveTextLockfile = true` in
+[bunfig.toml](bunfig.toml) keeps it as a reviewable `bun.lock` rather than a
+binary `bun.lockb`.
+
 ## License
 Copyright (C) 2024-2026 Subrosa Software Pty Ltd
 
