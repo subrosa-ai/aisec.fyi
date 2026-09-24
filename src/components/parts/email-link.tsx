@@ -8,7 +8,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 const ENCODED_ADDRESS = "nvfrpslv@fhoebfn.nv"
-const OBFUSCATED_MAILTO = btoa(rot13(ENCODED_ADDRESS))
+const MAILTO = btoa(ENCODED_ADDRESS)
 
 function rot13(input: string) {
   return input.replace(/[a-zA-Z]/g, (char) => {
@@ -18,7 +18,7 @@ function rot13(input: string) {
 }
 
 function decodeAddress() {
-  return rot13(atob(OBFUSCATED_MAILTO))
+  return rot13(atob(MAILTO))
 }
 
 /**
