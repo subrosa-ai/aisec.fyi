@@ -39,6 +39,22 @@ You can contribute new AI breaches and risk news at [src/data/updates.json](http
 - One entry per incident. Merge a disclosure and its patch into one entry; different incidents at the same company are separate entries.
 - Write summaries in the neutral tone of a catalog. No hype, no speculation, and no operational detail (e.g. do not reproduce jailbreak prompts or exploit payloads).
 
+#### Optional fields
+
+These three are optional; add them when you have the facts, and leave them out otherwise. Never guess.
+
+```json
+{
+  "incidentDate": "June 2026",
+  "sources": ["https://example.com/second-source"],
+  "related": ["aisec-310", "aisec-341"]
+}
+```
+
+- `incidentDate` — `"Month YYYY"` for when the incident actually **happened**, when that is earlier than `date` (when it became public). Many 2026 agent incidents were disclosed months late, and that gap is part of the story. Use the month the incident began; the summary carries the full range. Only set it when the month is stated in the source, and skip it for research disclosures, where "when it happened" has no clear meaning.
+- `sources` — extra corroborating URLs beyond `link`, in the same order of preference. Unlike `link`, a URL here may also appear elsewhere in the file.
+- `related` — ids of other entries that belong to the same story: one campaign, one vendor's chain of incidents, one regulator's actions against one product. Keep it symmetric — if A lists B, B lists A. The validator enforces this.
+
 ### Categories
 
 | value | use it for |

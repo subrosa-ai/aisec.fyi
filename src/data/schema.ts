@@ -11,6 +11,13 @@ export const aiSecNewschema = z.object({
   link: z.string(),
   summary: z.string(),
   category: z.string(),
+  // Optional enrichment. See README.md ("Entry format").
+  // `date` is when the incident became public; `incidentDate` is when it happened.
+  incidentDate: z.string().optional(),
+  // Corroborating URLs beyond `link`.
+  sources: z.array(z.string()).optional(),
+  // Ids of other entries that are part of the same story.
+  related: z.array(z.string()).optional(),
 })
 
 export type aiSecNewschemaType = z.infer<typeof aiSecNewschema>

@@ -36,6 +36,14 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { aiSecNewschemaType } from "@/data/schema";
 
+function hostnameOf(url: string) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return url;
+  }
+}
+
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
@@ -58,6 +66,13 @@ export function DataTable<TData, TValue>({
   );
 
   const [expanded, setExpanded] = React.useState<ExpandedState>({});
+  const titleById = React.useMemo(
+    () =>
+      new Map(
+        (data as any[]).map((d) => [d?.id as string, d?.title as string])
+      ),
+    [data]
+  );
 
   const table = useReactTable({
     data: data,
@@ -223,6 +238,59 @@ export function DataTable<TData, TValue>({
                                     Source
                                   </Link>
                                 </Button>
+                              )}
+                              {(row.original as any).incidentDate && (
+                                <p className="mt-2 text-xs text-muted-foreground">
+                                  Occurred {(row.original as any).incidentDate}
+                                  {" · disclosed "}
+                                  {(row.original as any).date}
+                                </p>
+                              )}
+                              {((row.original as any).sources ?? []).length >
+                                0 && (
+                                <div className="mt-3">
+                                  <h5 className="text-xs font-semibold">
+                                    More sources
+                                  </h5>
+                                  <ul className="flex flex-wrap gap-x-3 text-xs">
+                                    {(
+                                      (row.original as any).sources as string[]
+                                    ).map((src) => (
+                                      <li key={src}>
+                                        <Link
+                                          href={src}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="underline text-muted-foreground"
+                                        >
+                                          {hostnameOf(src)}
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )}
+                              {((row.original as any).related ?? []).length >
+                                0 && (
+                                <div className="mt-3">
+                                  <h5 className="text-xs font-semibold">
+                                    Related incidents
+                                  </h5>
+                                  <ul className="text-xs list-disc pl-4">
+                                    {(
+                                      (row.original as any).related as string[]
+                                    ).map((rid) => (
+                                      <li key={rid}>
+                                        <Link
+                                          href={`?rowId=${rid}&expanded=true`}
+                                          className="underline text-muted-foreground"
+                                        >
+                                          {titleById.get(rid) ?? rid}
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
                               )}
                             </div>
                           </div>
