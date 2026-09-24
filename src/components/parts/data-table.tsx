@@ -33,6 +33,7 @@ import { DataTablePagination } from "./data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
 
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { aiSecNewschemaType } from "@/data/schema";
 
@@ -229,7 +230,7 @@ export function DataTable<TData, TValue>({
       )}
       <DataTableToolbar table={table} />
       <div className="rounded-md border">
-        <Table className="min-w-full divide-y divide-gray-200 flex md:table">
+        <Table className="w-full divide-y divide-gray-200 block md:table md:table-fixed">
           <TableHeader className="hidden md:table-header-group">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id} className="md:table-row">
@@ -238,7 +239,10 @@ export function DataTable<TData, TValue>({
                     <TableHead
                       key={header.id}
                       colSpan={header.colSpan}
-                      className="md:table-cell"
+                      className={cn(
+                        "md:table-cell",
+                        header.column.columnDef.meta?.headClassName
+                      )}
                     >
                       {header.isPlaceholder
                         ? null
@@ -252,24 +256,32 @@ export function DataTable<TData, TValue>({
               </TableRow>
             ))}
           </TableHeader>
-          <TableBody>
+          <TableBody className="block md:table-row-group">
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <React.Fragment key={(row.original as any).id}>
                   <TableRow
                     data-state={row.getIsSelected() && "selected"}
                     id={`row-${(row.original as any).id}`}
-                    className="relative block md:table-row p-4 md:p-0 md:mb-4 md:mb-0 w-full"
+                    aria-expanded={row.getIsExpanded()}
+                    className={cn(
+                      "relative block md:table-row p-4 md:p-0 mb-4 md:mb-0 w-full",
+                      // The accent edge is an inset box-shadow, never a
+                      // ::before. A pseudo-element child of a <tr> gets wrapped
+                      // in an anonymous table cell, which adds a phantom column
+                      // and shifts every real cell one place to the right.
+                      row.getIsExpanded() &&
+                        "bg-muted/40 hover:bg-muted/40 shadow-[inset_2px_0_0_hsl(var(--foreground))]"
+                    )}
                   >
                     {row.getVisibleCells().map((cell) => (
                       <TableCell
                         key={cell.id}
-                        className="block md:table-cell p-2"
+                        className={cn(
+                          "block md:table-cell p-2 align-top",
+                          cell.column.columnDef.meta?.cellClassName
+                        )}
                         data-label={cell.column.columnDef.id} // Add data-label for mobile
-                        style={{
-                          width:
-                            cell.column.id === "expander" ? "10px" : "unset",
-                        }}
                       >
                         {flexRender(
                           cell.column.columnDef.cell,
@@ -279,14 +291,20 @@ export function DataTable<TData, TValue>({
                     ))}
                   </TableRow>
                   {row.getIsExpanded() && (
-                    <TableRow className="h-24">
-                      <TableCell colSpan={columns.length} className="p-0">
-                        <div className="bg-muted overflow-hidden">
-                          <div className="grid grid-cols-[auto,1fr] gap-x-4 p-4">
-                            <div className="w-8" />
-                            <div>
-                              <h4 className="font-semibold mb-2">Summary</h4>
-                              <p className="mb-2 text-sm text-muted-foreground">
+                    <TableRow className="block md:table-row hover:bg-transparent">
+                      <TableCell
+                        colSpan={table.getVisibleLeafColumns().length}
+                        className="block md:table-cell p-0"
+                      >
+                        <div className="overflow-hidden border-l-2 border-l-foreground bg-muted/40">
+                          <div className="grid grid-cols-1 gap-x-4 p-4 md:grid-cols-[auto,1fr]">
+                            <div className="hidden w-8 md:block" />
+                            <div className="space-y-4">
+                              <div>
+                              <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                                Summary
+                              </h4>
+                              <p className="mt-1.5 max-w-prose text-sm leading-relaxed text-foreground">
                                 {(row.original as any).summary ??
                                   "No summary available"}
                               </p>
@@ -294,7 +312,7 @@ export function DataTable<TData, TValue>({
                                 <Button
                                   asChild
                                   variant="link"
-                                  className="p-0 h-auto underline"
+                                  className="mt-2 h-auto p-0 text-sm underline"
                                 >
                                   <Link
                                     href={(row.original as any).link}
@@ -312,13 +330,14 @@ export function DataTable<TData, TValue>({
                                   {(row.original as any).date}
                                 </p>
                               )}
+                              </div>
                               {((row.original as any).sources ?? []).length >
                                 0 && (
-                                <div className="mt-3">
-                                  <h5 className="text-xs font-semibold">
+                                <div>
+                                  <h5 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                                     More sources
                                   </h5>
-                                  <ul className="flex flex-wrap gap-x-3 text-xs">
+                                  <ul className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-sm">
                                     {(
                                       (row.original as any).sources as string[]
                                     ).map((src) => (
@@ -327,7 +346,7 @@ export function DataTable<TData, TValue>({
                                           href={src}
                                           target="_blank"
                                           rel="noopener noreferrer"
-                                          className="underline text-muted-foreground"
+                                          className="text-foreground underline underline-offset-2 hover:text-primary"
                                         >
                                           {hostnameOf(src)}
                                         </Link>
@@ -338,18 +357,18 @@ export function DataTable<TData, TValue>({
                               )}
                               {((row.original as any).related ?? []).length >
                                 0 && (
-                                <div className="mt-3">
-                                  <h5 className="text-xs font-semibold">
+                                <div>
+                                  <h5 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                                     Related incidents
                                   </h5>
-                                  <ul className="text-xs list-disc pl-4">
+                                  <ul className="mt-1.5 list-disc space-y-1 pl-4 text-sm marker:text-muted-foreground">
                                     {(
                                       (row.original as any).related as string[]
                                     ).map((rid) => (
                                       <li key={rid}>
                                         <button
                                           type="button"
-                                          className="underline text-left text-muted-foreground hover:text-foreground"
+                                          className="text-left text-foreground underline underline-offset-2 hover:text-primary"
                                           onClick={() =>
                                             showCluster(rid, rid)
                                           }
@@ -383,7 +402,7 @@ export function DataTable<TData, TValue>({
             ) : (
               <TableRow>
                 <TableCell
-                  colSpan={columns.length}
+                  colSpan={table.getVisibleLeafColumns().length}
                   className="h-24 text-center"
                 >
                   No results.

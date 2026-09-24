@@ -8,6 +8,7 @@ import { EnvelopeClosedIcon, GitHubLogoIcon, TwitterLogoIcon } from "@radix-ui/r
 import { Button } from "@/components/ui/button";
 import { Toaster } from "@/components/ui/toaster";
 import { PostHogProvider } from "@/components/providers/posthog-provider";
+import { ThemeProvider, themeScript } from "@/components/providers/theme-provider";
 import { CopyrightYear } from "@/components/parts/copyright-year";
 import Link from "next/link";
 
@@ -38,18 +39,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="h-full flex-1 flex-col p-8 md:flex"
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="h-full flex-1 flex-col p-4 md:flex md:p-8"
       >
+        <ThemeProvider>
         <PostHogProvider>
           {children}
-          <footer className="flex items-center px-2 space-x-2">
+          <footer className="flex flex-col items-start gap-2 px-2 sm:flex-row sm:items-center sm:justify-between">
             <div className="text-sm text-muted-foreground">
               Maintained by the <Link href='https://subrosa.ai' className="underline" target="_blank" rel="noopener">Subrosa.ai</Link> team
               {" · "}
               &copy; 2024&ndash;<CopyrightYear buildYear={new Date().getFullYear()} />
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex shrink-0 items-center space-x-2">
               <Button asChild variant="link" className="flex h-8 w-8 p-0">
                 <Link href='https://github.com/subrosa-ai/aisec.fyi' target="_blank" rel="noopener noreferrer">
                   <GitHubLogoIcon className="h-4 w-4" />
@@ -69,6 +74,7 @@ export default function RootLayout({
           </footer>
           <Toaster />
         </PostHogProvider>
+        </ThemeProvider>
       </body>
       <GoogleAnalytics gaId="G-M1VFFEQENF" />
 
