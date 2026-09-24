@@ -10,6 +10,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { PostHogProvider } from "@/components/providers/posthog-provider";
 import { ThemeProvider, themeScript } from "@/components/providers/theme-provider";
 import { CopyrightYear } from "@/components/parts/copyright-year";
+import { EmailLink } from "@/components/parts/email-link";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -65,11 +66,9 @@ export default function RootLayout({
                   <TwitterLogoIcon className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild variant="link" className="flex h-8 w-8 p-0">
-                <Link href='mailto:aisecfyi@subrosa.ai' aria-label="Email AISec.fyi">
-                  <EnvelopeClosedIcon className="h-4 w-4" />
-                </Link>
-              </Button>
+              <EmailLink className="flex h-8 w-8 p-0" ariaLabel="Email AISec.fyi">
+                <EnvelopeClosedIcon className="h-4 w-4" />
+              </EmailLink>
             </div>
           </footer>
           <Toaster />

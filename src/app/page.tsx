@@ -18,6 +18,7 @@ import { Logo } from "@/components/parts/logo"
 import { Insights } from "@/components/parts/insights"
 import { NewsletterSignup } from "@/components/parts/newsletter-signup"
 import { SubscribeBanner } from "@/components/parts/subscribe-banner"
+import { EmailLink } from "@/components/parts/email-link"
 import { buildInsights } from "@/lib/insights"
 
 
@@ -75,6 +76,10 @@ export default async function LeakPage() {
                 Submit an AI Security Issue
               </Link>
             </Button>
+            {" · "}
+            <EmailLink className="p-0 h-auto underline">
+              Email us
+            </EmailLink>
           </div>
           <ThemeToggle />
         </div>
