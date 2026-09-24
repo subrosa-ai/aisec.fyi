@@ -2,6 +2,7 @@
   "name": "ai-sec-list",
   "version": "0.1.0",
   "private": true,
+  "license": "AGPL-3.0-or-later",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -28,6 +29,7 @@
     "lodash": "^4.17.21",
     "lucide-react": "^0.446.0",
     "next": "^16.3.6",
+    "posthog-js": "^1.434.12",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.5.2",

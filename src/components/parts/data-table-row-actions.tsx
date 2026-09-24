@@ -1,5 +1,8 @@
 "use client"
 
+// SPDX-FileCopyrightText: 2024-2026 Subrosa.ai
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu"
 import { toast } from "@/hooks/use-toast"
 import { DotsHorizontalIcon } from "@radix-ui/react-icons"

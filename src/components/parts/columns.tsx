@@ -1,5 +1,8 @@
 "use client"
 
+// SPDX-FileCopyrightText: 2024-2026 Subrosa.ai
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 import { ColumnDef } from "@tanstack/react-table"
 import { ChevronRight, ChevronDown } from "lucide-react"
 
