@@ -16,6 +16,8 @@ import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/parts/theme-toggle"
 import { Logo } from "@/components/parts/logo"
 import { Insights } from "@/components/parts/insights"
+import { NewsletterSignup } from "@/components/parts/newsletter-signup"
+import { SubscribeBanner } from "@/components/parts/subscribe-banner"
 import { buildInsights } from "@/lib/insights"
 
 
@@ -56,6 +58,7 @@ export default async function LeakPage() {
 
   return (
     <>
+      <SubscribeBanner />
       <div className="space-y-8">
         <div className="flex items-start justify-between gap-3">
           <div>
@@ -76,6 +79,14 @@ export default async function LeakPage() {
           <ThemeToggle />
         </div>
         <Insights insights={insights} />
+        {/* Static export: this is read at BUILD time, so changing it in
+            Netlify needs a redeploy. Unset means the form is not rendered at
+            all, which keeps the build green before Kit is configured. */}
+        {process.env.NEXT_PUBLIC_KIT_FORM_ACTION && (
+          <NewsletterSignup
+            action={process.env.NEXT_PUBLIC_KIT_FORM_ACTION}
+          />
+        )}
         <DataTable data={data} columns={columns} lastUpdated={lastUpdated} />
       </div>
     </>
