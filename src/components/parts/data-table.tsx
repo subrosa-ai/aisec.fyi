@@ -66,6 +66,9 @@ export function DataTable<TData, TValue>({
     []
   );
 
+  const [sorting, setSorting] = React.useState<SortingState>([
+    { id: "date", desc: true },
+  ]);
   const [expanded, setExpanded] = React.useState<ExpandedState>({});
   const titleById = React.useMemo(
     () =>
@@ -98,6 +101,7 @@ export function DataTable<TData, TValue>({
     data: rows,
     columns,
     state: {
+      sorting,
       columnVisibility,
       rowSelection,
       columnFilters,
@@ -106,6 +110,7 @@ export function DataTable<TData, TValue>({
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
     onColumnFiltersChange: setColumnFilters,
+    onSortingChange: setSorting,
     onColumnVisibilityChange: setColumnVisibility,
     onExpandedChange: setExpanded,
     getCoreRowModel: getCoreRowModel(),
@@ -115,11 +120,26 @@ export function DataTable<TData, TValue>({
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
     getRowCanExpand: () => true,
-    enableSorting: false,
     getRowId: (row, relativeIndex, parent) => {
       return (row as any).id;
     },
   });
+
+  // Page a row into view by looking it up in the table's own sorted and
+  // filtered rows. The previous version indexed into the raw `data` array,
+  // which only matches what is on screen while sorting is switched off — that
+  // mismatch is why sorting was removed in 45a6e36 rather than fixed.
+  const goToRow = React.useCallback(
+    (rowId: string) => {
+      const rows = table.getSortedRowModel().rows;
+      const index = rows.findIndex((row) => row.id === rowId);
+      if (index < 0) return;
+      table.setPageIndex(
+        Math.floor(index / table.getState().pagination.pageSize)
+      );
+    },
+    [table]
+  );
 
   // Read the deep-link params straight off the URL rather than through
   // next/navigation's useSearchParams(). That hook opts this component out of
@@ -137,21 +157,13 @@ export function DataTable<TData, TValue>({
     if (clusterId) setCluster(clusterId);
 
     if (rowId && isExpanded === "true") {
-      const rowIndex = data.findIndex((item) => (item as any).id === rowId); // Find the index of the item
-      const pageSize = table.getState().pagination.pageSize;
-      const targetPage = Math.floor(rowIndex / pageSize); // Calculate the target page
-      const currentPage = table.getState().pagination.pageIndex; // Get the current page index
-
-      if (currentPage !== targetPage) {
-        setExpanded({ [rowId]: true });
-        table.setPageIndex(targetPage - 1); // Update the table's page index
-      } else {
-        setExpanded({ [rowId]: true });
-        setTimeout(() => {
-          const element = document.getElementById(`row-${rowId}`);
-          if (element) element.scrollIntoView({ behavior: "smooth" });
-        }, 100);
-      }
+      setExpanded({ [rowId]: true });
+      goToRow(rowId);
+      setTimeout(() => {
+        document
+          .getElementById(`row-${rowId}`)
+          ?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
     }
     // Runs on mount: restores the expanded row from a shared deep link.
     // eslint-disable-next-line react-hooks/exhaustive-deps
