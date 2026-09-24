@@ -3,7 +3,7 @@
 // SPDX-FileCopyrightText: 2024-2026 Subrosa.ai
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import { ColumnDef } from "@tanstack/react-table"
+import { ColumnDef, RowData } from "@tanstack/react-table"
 import { ChevronRight, ChevronDown } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
@@ -13,6 +13,17 @@ import { DataTableColumnHeader } from "./data-table-column-header"
 import { DataTableRowActions } from "./data-table-row-actions"
 import { Button } from "../ui/button"
 import { differenceInCalendarMonths, parse } from "date-fns"
+
+// Column widths live on the column definition so they can be put on the <th>
+// itself. The table is `table-fixed` from md up, which means the header row
+// alone decides the widths -- expanding a row can no longer reflow the
+// columns underneath it.
+declare module "@tanstack/react-table" {
+  interface ColumnMeta<TData extends RowData, TValue> {
+    headClassName?: string
+    cellClassName?: string
+  }
+}
 
 const asMonth = (value: string) => parse(value, "MMMM yyyy", new Date())
 
@@ -26,6 +37,7 @@ function disclosureLag(incidentDate?: string, date?: string) {
 export const columns: ColumnDef<aiSecNewschemaType>[] = [
   {
     id: "expander",
+    meta: { headClassName: "md:w-12" },
     header: () => null,
     cell: ({ table, row }) => {
       return (
@@ -54,8 +66,9 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
   },
   {
     accessorKey: "category",
+    meta: { headClassName: "md:w-[150px]" },
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Category" className="md:w-[100px]"/>
+      <DataTableColumnHeader column={column} title="Category" />
     ),
     cell: ({ row }) => {
       const label = category.find((category) => category.value === row.original.category)
@@ -73,7 +86,7 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
   {
     accessorKey: "title",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Title" className="md:w-[500px]"/>
+      <DataTableColumnHeader column={column} title="Title" />
     ),
     cell: ({ row }) => {
 
@@ -91,6 +104,7 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
   },
   {
     accessorKey: "region",
+    meta: { headClassName: "md:w-[160px]" },
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Region"/>
     ),
@@ -100,7 +114,7 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
       )
 
       return (
-        <div className="flex w-[150px] items-center">
+        <div className="flex items-center">
           <span>{region?.label}</span>
         </div>
       )
@@ -111,8 +125,9 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
   },
   {
     accessorKey: "date",
+    meta: { headClassName: "md:w-[170px]" },
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Date" className="w-[150px]"/>
+      <DataTableColumnHeader column={column} title="Date" />
     ),
     cell: ({ row }) => {
       const incidentDate = row.original.incidentDate
@@ -150,6 +165,7 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
   },
   {
     id: "actions",
+    meta: { headClassName: "md:w-[52px]" },
     cell: ({ row }) => {
       return <div className="hidden md:flex">
         <DataTableRowActions rowId={row.original.id} link={row.original.link} />
@@ -158,6 +174,7 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
   },
   {
     id: "expander-mobile",
+    meta: { headClassName: "md:w-0 md:p-0", cellClassName: "md:p-0" },
     header: () => null,
     cell: ({ table, row }) => {
       return (

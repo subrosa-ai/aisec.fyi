@@ -27,7 +27,12 @@ body {
     --secondary: 60 4.8% 95.9%;
     --secondary-foreground: 24 9.8% 10%;
     --muted: 60 4.8% 95.9%;
-    --muted-foreground: 25 5.3% 44.7%;
+    /* Darkened from shadcn's stock 44.7%, which lands at 4.40:1 on --muted and
+       so fails WCAG AA (4.5:1) for the small text it is used on. 40% gives
+       5.25:1 on --muted and 5.73:1 on --background while still reading as
+       clearly secondary next to --foreground (18:1). The dark theme's
+       equivalent already passes at 6.01:1 and is left alone. */
+    --muted-foreground: 25 5.3% 40%;
     --accent: 60 4.8% 95.9%;
     --accent-foreground: 24 9.8% 10%;
     --destructive: 0 84.2% 60.2%;
@@ -41,6 +46,13 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+
+    /* Chart ink. One series hue is enough: every chart here plots a single
+       measure, so colour carries no identity and never needs a second slot.
+       Validated with the dataviz palette validator against this theme's own
+       surface (#ffffff): lightness band, chroma floor, CVD separation and
+       normal-vision floor all pass. */
+    --viz-series: #2a78d6;
   }
   .dark {
     --background: 20 14.3% 4.1%;
@@ -67,12 +79,30 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+
+    /* Re-stepped for the dark surface (#0c0a09), not an automatic flip of the
+       light value. Validated against that surface: all checks pass, including
+       >= 3:1 contrast, which the light step misses by design on white. */
+    --viz-series: #3987e5;
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+  }
+  html {
+    /* Reserve the scrollbar's space permanently. Without this, anything that
+       changes the page's height -- expanding a row, filtering the table --
+       makes the scrollbar appear or vanish and jogs the whole layout
+       sideways. */
+    scrollbar-gutter: stable;
+  }
+  :root {
+    color-scheme: light;
+  }
+  .dark {
+    color-scheme: dark;
   }
   body {
     @apply bg-background text-foreground;

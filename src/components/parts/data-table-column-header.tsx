@@ -36,7 +36,7 @@ export function DataTableColumnHeader<TData, TValue>({
 
   return (
     <div className={cn("flex items-center space-x-2", className)}>
-      <DropdownMenu>
+      <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
           <Button
             variant="ghost"
