@@ -31,7 +31,7 @@ server-side code, so `next start` does not apply — use `bun run build` and the
 `bun run start` to preview the generated `out/` directory.
 
 ## License
-Copyright (C) 2024-2026 Subrosa.ai
+Copyright (C) 2024-2026 Subrosa Software Pty Ltd
 
 This project is licensed under the **GNU Affero General Public License v3.0 or
 later** (AGPL-3.0-or-later) - see the [LICENSE](LICENSE.md) file for details.
