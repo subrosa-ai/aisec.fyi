@@ -11,6 +11,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+
+  // Disable sourcemaps in the production build.
+  productionBrowserSourceMaps: false,
 };
 
 export default nextConfig;

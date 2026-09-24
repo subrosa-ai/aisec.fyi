@@ -5,7 +5,7 @@
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "NEXT_TELEMETRY_DISABLED=1 next build",
     "start": "bunx serve out",
     "lint": "eslint ."
   },
