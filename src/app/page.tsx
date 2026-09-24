@@ -72,7 +72,7 @@ export default async function LeakPage() {
             </p>
             <Button asChild variant="link" className="p-0 h-auto underline">
               <Link href='https://github.com/subrosa-ai/aisec.fyi/pulls' target="_blank" rel="noopener">
-                Submit AI Security Issue
+                Submit an AI Security Issue
               </Link>
             </Button>
           </div>
