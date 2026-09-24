@@ -17,6 +17,60 @@ We welcome contributions to enhance the project and AI security related report! 
 ## Submit new AI breach news
 You can contribute new AI breaches and risk news at [src/data/updates.json](https://github.com/subrosa-ai/aisec.fyi/blob/master/src/data/updates.json) following existing JSON object format, and create PR for review.
 
+### Entry format
+
+```json
+{
+  "id": "aisec-123",
+  "title": "Vendor X patches zero-click prompt injection in Product Y (CVE-2026-12345)",
+  "region": "Global",
+  "date": "September 2026",
+  "link": "https://example.com/primary-disclosure",
+  "summary": "Two to four neutral sentences: what happened, who was affected, how it was found or disclosed, and what the response was.",
+  "category": "prompt injection"
+}
+```
+
+- `id` — `aisec-N`, incrementing from the last entry in the file.
+- `date` — the month the incident became **public** (`"Month YYYY"`, full English month name). If the incident happened earlier, say so in the summary.
+- `link` — one canonical source that you have opened and that is about this exact incident. Prefer the vendor or researcher's primary disclosure, then a reputable outlet. No search pages, no social-media posts.
+- `region` — a value from `regions` in [src/data/data.tsx](src/data/data.tsx) (add a new one there, with its flag, if needed). Use `Global` when there is no single jurisdiction.
+- `category` — a value from `category` in [src/data/data.tsx](src/data/data.tsx); see the taxonomy below.
+- One entry per incident. Merge a disclosure and its patch into one entry; different incidents at the same company are separate entries.
+- Write summaries in the neutral tone of a catalog. No hype, no speculation, and no operational detail (e.g. do not reproduce jailbreak prompts or exploit payloads).
+
+#### Optional fields
+
+These three are optional; add them when you have the facts, and leave them out otherwise. Never guess.
+
+```json
+{
+  "incidentDate": "June 2026",
+  "sources": ["https://example.com/second-source"],
+  "related": ["aisec-310", "aisec-341"]
+}
+```
+
+- `incidentDate` — `"Month YYYY"` for when the incident actually **happened**, when that is earlier than `date` (when it became public). Many 2026 agent incidents were disclosed months late, and that gap is part of the story. Use the month the incident began; the summary carries the full range. Only set it when the month is stated in the source, and skip it for research disclosures, where "when it happened" has no clear meaning.
+- `sources` — extra corroborating URLs beyond `link`, in the same order of preference. Unlike `link`, a URL here may also appear elsewhere in the file.
+- `related` — ids of other entries that belong to the same story: one campaign, one vendor's chain of incidents, one regulator's actions against one product. Keep it symmetric — if A lists B, B lists A. The validator enforces this.
+
+### Categories
+
+| value | use it for |
+|---|---|
+| `data leak` | accidental exposure of data — open databases/buckets, leaked tokens, chat logs or files indexed or shared by mistake |
+| `hack` | deliberate intrusion by a threat actor — breach of an AI company or AI-related system, stolen credentials, account takeover, model theft/distillation campaigns |
+| `vulnerability` | a disclosed flaw in an AI product, framework, model-serving stack, agent or MCP server that is not primarily a prompt-injection issue (with or without confirmed exploitation) |
+| `privacy breach` | regulatory findings and fines, unlawful use of personal data for AI training, biometrics/facial-recognition misuse, privacy-violating product behaviour |
+| `prompt injection` | an AI system hijacked by instructions hidden in the content it processes — product flaws found by researchers (EchoLeak, AgentFlayer…) and in-the-wild abuse |
+| `jailbreak` | notable guardrail bypasses and manipulations of deployed models or chatbots |
+| `supply chain` | malicious or compromised packages, models, extensions, skills and MCP servers; poisoned dependencies; typosquatting / slopsquatting |
+| `rogue agent` | an AI agent taking unauthorised or destructive real-world action — deleting data, publishing packages, escaping a sandbox, breaching third parties during a lab's training or evaluation (the "lab leak" incidents of 2026) |
+| `ai-enabled attack` | threat actors using AI to attack others — LLM-written or LLM-operated malware, AI-orchestrated intrusions, deepfake and voice-clone fraud, LLM grooming / disinformation, state actors abusing AI services |
+| `model leak` | unauthorised release of model weights, system prompts, unreleased-model details or AI-lab source code |
+| `safety incident` | harmful model behaviour in production that is not primarily a security flaw (non-consensual imagery at scale, unauthorised system-prompt changes causing harmful output, dangerous advice) — use sparingly |
+
 ## Getting Started
 This project is made of Next.js and deployed on Netlify, run the development server:
 
