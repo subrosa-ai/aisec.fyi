@@ -32,7 +32,7 @@
     "posthog-js": "^1.434.12",
     "react": "^18",
     "react-dom": "^18",
-    "tailwind-merge": "^2.5.2",
+    "tailwind-merge": "^3.7.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"
   },
