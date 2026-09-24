@@ -1,7 +1,9 @@
 "use client";
 
+// SPDX-FileCopyrightText: 2024-2026 Subrosa.ai
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 import * as React from "react";
-import { useSearchParams } from "next/navigation";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -37,11 +39,14 @@ import { aiSecNewschemaType } from "@/data/schema";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  /** Resolved at build time; see src/lib/last-updated.ts */
+  lastUpdated: string;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  lastUpdated,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
@@ -53,7 +58,6 @@ export function DataTable<TData, TValue>({
   );
 
   const [expanded, setExpanded] = React.useState<ExpandedState>({});
-  const searchParams = useSearchParams();
 
   const table = useReactTable({
     data: data,
@@ -82,30 +86,38 @@ export function DataTable<TData, TValue>({
     },
   });
 
+  // Read the deep-link params straight off the URL rather than through
+  // next/navigation's useSearchParams(). That hook opts this component out of
+  // prerendering, and because the whole table sits inside a <Suspense> boundary
+  // the static export would ship the fallback ("Loading...") instead of the
+  // incident list — leaving the site's actual content out of the HTML.
+  // The write path below already uses window.location, so this keeps both
+  // directions of the URL sync consistent.
   React.useEffect(() => {
-    if (searchParams) {
-      const rowId = searchParams.get("rowId");
-      const isExpanded = searchParams.get("expanded");
+    const params = new URLSearchParams(window.location.search);
+    const rowId = params.get("rowId");
+    const isExpanded = params.get("expanded");
 
-      if (rowId && isExpanded === "true") {
-        const rowIndex = data.findIndex((item) => (item as any).id === rowId); // Find the index of the item
-        const pageSize = table.getState().pagination.pageSize;
-        const targetPage = Math.floor(rowIndex / pageSize); // Calculate the target page
-        const currentPage = table.getState().pagination.pageIndex; // Get the current page index
+    if (rowId && isExpanded === "true") {
+      const rowIndex = data.findIndex((item) => (item as any).id === rowId); // Find the index of the item
+      const pageSize = table.getState().pagination.pageSize;
+      const targetPage = Math.floor(rowIndex / pageSize); // Calculate the target page
+      const currentPage = table.getState().pagination.pageIndex; // Get the current page index
 
-        if (currentPage !== targetPage) {
-          setExpanded({ [rowId]: true });
-          table.setPageIndex(targetPage - 1); // Update the table's page index
-        } else {
-          setExpanded({ [rowId]: true });
-          setTimeout(() => {
-            const element = document.getElementById(`row-${rowId}`);
-            if (element) element.scrollIntoView({ behavior: "smooth" });
-          }, 100);
-        }
+      if (currentPage !== targetPage) {
+        setExpanded({ [rowId]: true });
+        table.setPageIndex(targetPage - 1); // Update the table's page index
+      } else {
+        setExpanded({ [rowId]: true });
+        setTimeout(() => {
+          const element = document.getElementById(`row-${rowId}`);
+          if (element) element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
       }
     }
-  }, [searchParams, data, table]);
+    // Runs on mount: restores the expanded row from a shared deep link.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   React.useEffect(() => {
     const expandedRowIds = Object.keys(expanded);
@@ -233,7 +245,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <DataTablePagination table={table} />
+      <DataTablePagination table={table} lastUpdated={lastUpdated} />
     </div>
   );
 }

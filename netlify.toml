@@ -1,0 +1,25 @@
+[build]
+  # Install with bun explicitly: Netlify's package-manager detection historically
+  # keyed on the binary `bun.lockb`, and this project uses the plaintext `bun.lock`
+  # (see bunfig.toml). Without this it can silently fall back to `npm install`,
+  # which ignores the lockfile and makes builds non-reproducible.
+  # --frozen-lockfile fails the build if bun.lock and package.json have drifted.
+  command = "bun install --frozen-lockfile && bun run build"
+
+  # Stays ".next" even though this is a static export (`output: "export"`).
+  # The Next.js Runtime reads its build metadata from `.next`, sees
+  # output === "export", and publishes the exported `out/` directory itself.
+  # Pointing this at "out" would fail the build: the runtime looks for
+  # `.next/required-server-files.json` in the publish directory.
+  publish = ".next"
+
+[build.environment]
+  # Next.js 16 requires Node >= 20.9
+  NODE_VERSION = "22"
+  BUN_VERSION = "1.4.2"
+
+# The site has no API routes or server rendering, so the runtime's export path
+# emits zero serverless functions — it only copies static output and applies
+# headers/image config.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

@@ -1,0 +1,4 @@
+[install]
+# Always write the human-readable, diffable text lockfile (bun.lock)
+# instead of the binary bun.lockb.
+saveTextLockfile = true

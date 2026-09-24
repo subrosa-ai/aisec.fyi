@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2024-2026 Subrosa.ai
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 import * as React from "react"
 import { CheckIcon, PlusCircledIcon } from "@radix-ui/react-icons"
 import { Column } from "@tanstack/react-table"

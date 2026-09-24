@@ -1,5 +1,8 @@
 "use client"
 
+// SPDX-FileCopyrightText: 2024-2026 Subrosa.ai
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
 import { MixerHorizontalIcon } from "@radix-ui/react-icons"
 import { Table } from "@tanstack/react-table"
