@@ -19,6 +19,7 @@
 # misc
 .DS_Store
 *.pem
+.s[a-z][a-z]
 
 # debug
 npm-debug.log*
@@ -26,6 +27,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
 .env*.local
 
 # vercel
@@ -34,3 +36,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# lockfiles: this project uses bun with a plaintext lockfile (bun.lock)
+# see bunfig.toml [install] saveTextLockfile
+bun.lockb
+yarn.lock
+package-lock.json
+pnpm-lock.yaml

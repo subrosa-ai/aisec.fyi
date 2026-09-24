@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://aisec.fyi"),
   title: "AISec.fyi",
   description: "AI security, privacy breaches, data leaks and other related information",
   icons: [
