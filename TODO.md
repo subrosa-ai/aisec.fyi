@@ -56,9 +56,9 @@ The job should draft an entry in the existing format and leave the link for a hu
 
 ## 5. Site ideas
 
-Shipped: the Year facet, the `?cluster=` related view, the disclosure-lag line under each date, and column sorting. Still open:
+Shipped: the Year facet, the `?cluster=` related view, and the disclosure-lag line under each date. Still open:
 
 - A timeline view. The Year facet narrows the table, but the 2026 agent incidents really want a horizontal axis with `incidentDate` and `date` as two marks per incident.
-- A sort by disclosure lag — "what was sat on longest?" — which needs a column of its own to hang the sort on, since Date already sorts by disclosure date.
+- Sortable columns. `enableSorting` is false on the table, so ordering is fixed newest-first; a lag sort ("what was sat on longest?") would be a good reason to turn it back on.
 - Cluster permalinks in the share menu, so the row-action share button can offer "copy link to this cluster" alongside the single-incident link.
 - Clusters are seeded from one entry, so `?cluster=aisec-320` shows that entry plus its `related`. A cluster that is more than one hop deep would need a transitive walk.

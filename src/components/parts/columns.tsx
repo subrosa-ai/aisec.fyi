@@ -26,7 +26,6 @@ function disclosureLag(incidentDate?: string, date?: string) {
 export const columns: ColumnDef<aiSecNewschemaType>[] = [
   {
     id: "expander",
-    enableSorting: false,
     header: () => null,
     cell: ({ table, row }) => {
       return (
@@ -151,7 +150,6 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
   },
   {
     id: "actions",
-    enableSorting: false,
     cell: ({ row }) => {
       return <div className="hidden md:flex">
         <DataTableRowActions rowId={row.original.id} link={row.original.link} />
@@ -160,7 +158,6 @@ export const columns: ColumnDef<aiSecNewschemaType>[] = [
   },
   {
     id: "expander-mobile",
-    enableSorting: false,
     header: () => null,
     cell: ({ table, row }) => {
       return (
