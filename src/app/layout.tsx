@@ -45,7 +45,7 @@ export default function RootLayout({
           {children}
           <footer className="flex items-center px-2 space-x-2">
             <div className="text-sm text-muted-foreground">
-              Maintain by <Link href='https://subrosa.ai' className="underline" target="_blank" rel="noopener">Subrosa.ai</Link> team
+              Maintained by the <Link href='https://subrosa.ai' className="underline" target="_blank" rel="noopener">Subrosa.ai</Link> team
               {" · "}
               &copy; 2024&ndash;<CopyrightYear buildYear={new Date().getFullYear()} />
             </div>
