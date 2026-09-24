@@ -30,41 +30,6 @@ The site is a **static export** (`output: "export"` in `next.config.mjs`) with n
 server-side code, so `next start` does not apply — use `bun run build` and then
 `bun run start` to preview the generated `out/` directory.
 
-## Analytics (PostHog)
-
-PostHog stays switched off until a project key is supplied — nothing is sent
-without one. Provide it as a Netlify environment variable:
-
-**Site configuration → Environment variables → Add a variable**
-
-| Key | Value |
-| --- | --- |
-| `NEXT_PUBLIC_POSTHOG_KEY` | your project key, e.g. `phc_xxxxxxxx…` |
-| `NEXT_PUBLIC_POSTHOG_HOST` | `https://us.i.posthog.com` (or `https://eu.i.posthog.com` for EU Cloud) |
-
-Find the key at **PostHog → Settings → Project → Project API Key**. See
-[.env.example](.env.example) for local development, and
-`src/components/providers/posthog-provider.tsx` for the in-code placeholder if
-you would rather hardcode it.
-
-### Two things to watch out for
-
-**Do not mark it as a "secret" value.** Netlify's secrets scanning fails a build
-when the value of a secret-scoped variable is found in the deploy output. Any
-`NEXT_PUBLIC_*` variable is inlined into the client-side JavaScript by design, so
-marking it secret will break the deploy. If a build fails with a secrets-scanning
-error, exclude the key via the `SECRETS_SCAN_OMIT_KEYS` environment variable
-(check the current [Netlify secrets scanning docs](https://docs.netlify.com/build/configure-builds/secrets-scanning/)
-for the exact syntax).
-
-This is safe: a PostHog **project** key is public by design and is meant to ship
-in client-side code. Never put a PostHog *personal* API key here — those are
-genuinely private.
-
-**The key is baked in at build time.** Because this is a static export, the value
-is compiled into the bundle rather than read at runtime. Adding or changing it in
-Netlify requires a **redeploy** before it takes effect.
-
 ## License
 Copyright (C) 2024-2026 Subrosa.ai
 
