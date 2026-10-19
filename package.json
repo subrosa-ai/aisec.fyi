@@ -31,7 +31,7 @@
     "next": "^16.3.6",
     "posthog-js": "^1.434.12",
     "react": "^18",
-    "react-dom": "^18",
+    "react-dom": "^19",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"
@@ -40,7 +40,7 @@
     "@types/lodash": "^4.17.9",
     "@types/node": "^20",
     "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "^16.3.6",
     "postcss": "^8",
